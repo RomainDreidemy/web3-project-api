@@ -7,20 +7,11 @@
 
 ## Installation
 
-- Modifier la DATABASE_URL dans le .env
+- Dupliquer le fichier **.env** en **.env.local** qui ne sera pas versionné.
+- Renseigné les différentes varianble d'environnement
 
-- ```composer install```
-
-- ```php bin/console doctrine:migrations:migrate```
-
-- ```php bin/console doctrine:fixtures:load```
-
-## Installation du bundle pour la gestion des JWT
-
-- Générer une clé publique et privée avec une passphrase à reporter dans le .env
-
+Si vous êtes en développement exécutez cette commande:
 ```
-$ mkdir -p config/jwt
-$ openssl genrsa -out config/jwt/private.pem -aes256 4096
-$ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+make init_local
 ```
+
