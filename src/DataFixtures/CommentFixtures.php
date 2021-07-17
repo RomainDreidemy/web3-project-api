@@ -19,7 +19,7 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
 
         for ($i = 0; $i < 4; $i++) {
             $comment = (new Comment())
-                ->setText($faker->paragraph)
+                ->setText('Ceci est un commentaire.')
                 ->setModule($faker->randomElement($modules))
             ;
 
