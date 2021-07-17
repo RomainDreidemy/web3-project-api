@@ -2,15 +2,32 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ModuleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints\NotNull;
 
 /**
  * @ORM\Entity(repositoryClass=ModuleRepository::class)
  */
+#[
+    ApiResource(
+        collectionOperations: [
+        'GET' => [
+            'normalization_context' => ['groups' => ['Modules:read']],
+            'openapi_context' => ['security' => [['bearerAuth' => []]]]
+        ]
+    ],
+        itemOperations: ['GET' => [
+//        'normalization_context' => ['groups' => ['Familly:read']],
+        'openapi_context' => ['security' => [['bearerAuth' => []]]]
+    ]],
+        paginationEnabled: false,
+    )
+]
 class Module
 {
     /**
@@ -18,11 +35,13 @@ class Module
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['Familly:read', 'Modules:read'])]
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['Modules:read'])]
     private ?string $name;
 
     /**

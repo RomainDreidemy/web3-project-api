@@ -61,6 +61,7 @@ class Familly
     /**
      * @ORM\OneToMany(targetEntity=Module::class, mappedBy="familly")
      */
+    #[Groups(['Familly:read'])]
     private ArrayCollection $modules;
 
     public function __construct()
