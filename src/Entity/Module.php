@@ -37,6 +37,12 @@ class Module
     #[NotNull(message: 'Un utilisateur doir être choisi')]
     private ?User $user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Familly::class, inversedBy="modules")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ?Familly $familly;
+
     public function __construct()
     {
         $this->sensors = new ArrayCollection();
@@ -97,6 +103,18 @@ class Module
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getFamilly(): ?Familly
+    {
+        return $this->familly;
+    }
+
+    public function setFamilly(?Familly $familly): self
+    {
+        $this->familly = $familly;
 
         return $this;
     }
