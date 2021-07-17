@@ -43,9 +43,21 @@ class Module
      */
     private ?Familly $familly;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="module", orphanRemoval=true)
+     */
+    private $comments;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="module", orphanRemoval=true)
+     */
+    private $images;
+
     public function __construct()
     {
         $this->sensors = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -115,6 +127,66 @@ class Module
     public function setFamilly(?Familly $familly): self
     {
         $this->familly = $familly;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setModule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getModule() === $this) {
+                $comment->setModule(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setModule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getModule() === $this) {
+                $image->setModule(null);
+            }
+        }
 
         return $this;
     }
