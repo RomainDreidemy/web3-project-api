@@ -51,18 +51,18 @@ class Familly
      * @ORM\OneToMany(targetEntity=Sheet::class, mappedBy="familly", orphanRemoval=true)
      */
     #[Groups(['Familly:read'])]
-    private ArrayCollection $sheets;
+    private Collection $sheets;
 
     /**
      * @ORM\OneToMany(targetEntity=Spec::class, mappedBy="familly", orphanRemoval=true)
      */
-    private ArrayCollection $specs;
+    private Collection $specs;
 
     /**
      * @ORM\OneToMany(targetEntity=Module::class, mappedBy="familly")
      */
     #[Groups(['Familly:read'])]
-    private ArrayCollection $modules;
+    private Collection $modules;
 
     public function __construct()
     {

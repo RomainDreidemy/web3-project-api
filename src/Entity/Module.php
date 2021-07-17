@@ -39,7 +39,7 @@ class Module
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     #[Groups(['Modules:read', 'Module:read'])]
     private ?string $name;
@@ -91,7 +91,7 @@ class Module
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
