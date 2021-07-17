@@ -22,7 +22,7 @@ use Symfony\Component\Validator\Constraints\NotNull;
         ]
     ],
         itemOperations: ['GET' => [
-//        'normalization_context' => ['groups' => ['Familly:read']],
+        'normalization_context' => ['groups' => ['Module:read']],
         'openapi_context' => ['security' => [['bearerAuth' => []]]]
     ]],
         paginationEnabled: false,
@@ -35,19 +35,19 @@ class Module
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Familly:read', 'Modules:read'])]
+    #[Groups(['Familly:read', 'Modules:read', 'Module:read'])]
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    #[Groups(['Modules:read'])]
+    #[Groups(['Modules:read', 'Module:read'])]
     private ?string $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Sensor::class, mappedBy="module", orphanRemoval=true)
      */
-    private ArrayCollection $sensors;
+    private Collection $sensors;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="modules")
@@ -65,12 +65,14 @@ class Module
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="module", orphanRemoval=true)
      */
-    private $comments;
+    #[Groups(['Module:read'])]
+    private Collection $comments;
 
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="module", orphanRemoval=true)
      */
-    private $images;
+    #[Groups(['Module:read'])]
+    private Collection $images;
 
     public function __construct()
     {

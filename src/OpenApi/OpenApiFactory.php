@@ -55,11 +55,11 @@ class OpenApiFactory implements OpenApiFactoryInterface
             'properties' => [
                 'username' => [
                     'type' => 'string',
-                    'example' => 'test@gmail.com'
+                    'example' => 'admin@domain.net'
                 ],
                 'password' => [
                     'type' => 'string',
-                    'example' => 'romain'
+                    'example' => 'admin'
                 ]
             ]
         ]));
