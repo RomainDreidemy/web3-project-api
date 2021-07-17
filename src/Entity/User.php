@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\ResetPasswordController;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,6 +14,60 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
+#[
+    ApiResource(
+        collectionOperations: [
+            'resetPassword' => [
+                'method' => 'POST',
+                'path' => '/users/reset-password',
+                'controller' => ResetPasswordController::class,
+                'read' => false,
+                'write' => false,
+
+                'openapi_context' => [
+                    'security' => [['bearerAuth' => []]],
+
+                    'requestBody' => [
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    'type' => 'object',
+                                    'required' => 'password',
+                                    'properties' => [
+                                        'password' => [
+                                            'type' => 'string',
+                                            'example' => 'mon_nouveau_mot_de_passe'
+                                        ]
+                                    ]
+                                ],
+                            ]
+                        ]
+                    ],
+                    'responses' => [
+                        '201' => [
+                            'description' => 'Nombre de résultat',
+                            'content' => [
+                                'application/json' => [
+                                    'schema' => [
+                                        'type' => 'object',
+
+                                        'properties' => [
+                                            'password' => [
+                                                'type' => 'string',
+                                                'example' => 'mon_nouveau_mot_de_passe'
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        itemOperations: []
+    )
+]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
