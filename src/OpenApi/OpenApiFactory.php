@@ -25,6 +25,16 @@ class OpenApiFactory implements OpenApiFactoryInterface
 
         $this->setLoginPath($openApi);
 
+        $this->addSchema($openApi, 'ResetPassword', new \ArrayObject([
+            'type' => 'object',
+            'properties' => [
+                'password' => [
+                    'type' => 'string',
+                    'example' => 'admin'
+                ]
+            ]
+        ]));
+
         return $openApi;
     }
 
