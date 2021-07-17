@@ -2,15 +2,32 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ModuleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints\NotNull;
 
 /**
  * @ORM\Entity(repositoryClass=ModuleRepository::class)
  */
+#[
+    ApiResource(
+        collectionOperations: [
+        'GET' => [
+            'normalization_context' => ['groups' => ['Modules:read']],
+            'openapi_context' => ['security' => [['bearerAuth' => []]]]
+        ]
+    ],
+        itemOperations: ['GET' => [
+        'normalization_context' => ['groups' => ['Module:read']],
+        'openapi_context' => ['security' => [['bearerAuth' => []]]]
+    ]],
+        paginationEnabled: false,
+    )
+]
 class Module
 {
     /**
@@ -18,17 +35,19 @@ class Module
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['Familly:read', 'Modules:read', 'Module:read'])]
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['Modules:read', 'Module:read'])]
     private ?string $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Sensor::class, mappedBy="module", orphanRemoval=true)
      */
-    private ArrayCollection $sensors;
+    private Collection $sensors;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="modules")
@@ -46,12 +65,14 @@ class Module
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="module", orphanRemoval=true)
      */
-    private $comments;
+    #[Groups(['Module:read'])]
+    private Collection $comments;
 
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="module", orphanRemoval=true)
      */
-    private $images;
+    #[Groups(['Module:read'])]
+    private Collection $images;
 
     public function __construct()
     {

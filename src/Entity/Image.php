@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
@@ -20,11 +21,13 @@ class Image
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['Module:read'])]
     private $name;
 
     /**
      * @ORM\Column(type="datetime_immutable")
      */
+    #[Groups(['Module:read'])]
     private $created_at;
 
     /**

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SheetRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SheetRepository::class)
@@ -15,16 +16,19 @@ class Sheet
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['Familly:read'])]
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['Familly:read'])]
     private string $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
+    #[Groups(['Familly:read'])]
     private ?string $content;
 
     /**
