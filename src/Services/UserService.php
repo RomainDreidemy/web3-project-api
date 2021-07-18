@@ -19,7 +19,7 @@ class UserService
 
     public function resetPassword(string $token ,string $newPassword): bool
     {
-        /** @var User $user */
+        /** @var User|null $user */
         $user = $this->manager->getRepository(User::class)->findOneBy(['passwordToken' => $token]);
 
         if(is_null($user)){
@@ -39,7 +39,7 @@ class UserService
 
     public function generateToken(string $email): string|false
     {
-        /** @var User $user */
+        /** @var User|null $user */
         $user = $this->manager->getRepository(User::class)->findOneBy(['email' => $email]);
 
         if(is_null($user)){

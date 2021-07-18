@@ -17,7 +17,7 @@ class ResetPasswordController extends AbstractController
     #[Route('/api/users/password-token', name: 'user_password_token' ,methods: ['POST'])]
     public function generateToken(Request $request): JsonResponse
     {
-        $email = json_decode($request->getContent(), true)['email'] ?? null;
+        $email = json_decode((string)$request->getContent(), true)['email'] ?? null;
 
         if(is_null($email)){
             return $this->json([], 400);
@@ -33,7 +33,7 @@ class ResetPasswordController extends AbstractController
     #[Route('/api/users/password-refresh', name: 'user_password_refresh' ,methods: ['POST'] )]
     public function refreshPassword(Request $request): JsonResponse
     {
-        $content = json_decode($request->getContent(), true);
+        $content = json_decode((string)$request->getContent(), true);
 
         $token = $content['token'] ?? null;
         $password = $content['password'] ?? null;

@@ -15,6 +15,10 @@ class OpenApiFactory implements OpenApiFactoryInterface
 
     public function __construct(private OpenApiFactoryInterface $decorated){}
 
+    /**
+     * @param array<string> $context
+     * @return OpenApi
+     */
     public function __invoke(array $context = []): OpenApi
     {
         $openApi = $this->decorated->__invoke($context);
@@ -38,17 +42,17 @@ class OpenApiFactory implements OpenApiFactoryInterface
         return $openApi;
     }
 
-    private function hidePaths(OpenApi $openApi)
+    private function hidePaths(OpenApi $openApi): void
     {
         /** @var PathItem $path */
         foreach ($openApi->getPaths()->getPaths() as $key => $path){
-            if ($path->getGet() && $path->getGet()->getSummary() === 'hidden'){
+            if (!is_null($path->getGet()) && $path->getGet()->getSummary() === 'hidden'){
                 $openApi->getPaths()->addPath($key, $path->withGet(null));
             }
         }
     }
 
-    private function setAuthSecurityScheme(OpenApi $openApi)
+    private function setAuthSecurityScheme(OpenApi $openApi): void
     {
         $schemas = $openApi->getComponents()->getSecuritySchemes();
         $schemas['bearerAuth'] = new \ArrayObject([
@@ -58,7 +62,7 @@ class OpenApiFactory implements OpenApiFactoryInterface
         ]);
     }
 
-    private function setLoginPath(OpenApi $openApi)
+    private function setLoginPath(OpenApi $openApi): void
     {
         $this->addSchema($openApi, 'Credentials', new \ArrayObject([
             'type' => 'object',
@@ -115,7 +119,7 @@ class OpenApiFactory implements OpenApiFactoryInterface
         $openApi->getPaths()->addPath('/api/login', $pathItem);
     }
 
-    private function addSchema(OpenApi $openApi, string $key,\ArrayObject $schema)
+    private function addSchema(OpenApi $openApi, string $key,\ArrayObject $schema): void
     {
         $schemas = $openApi->getComponents()->getSchemas();
         $schemas[$key] = $schema;

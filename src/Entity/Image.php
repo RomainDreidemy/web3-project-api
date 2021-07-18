@@ -16,25 +16,25 @@ class Image
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     #[Groups(['Module:read'])]
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="datetime_immutable")
      */
     #[Groups(['Module:read'])]
-    private $created_at;
+    private \DateTimeImmutable $created_at;
 
     /**
      * @ORM\ManyToOne(targetEntity=Module::class, inversedBy="images")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $module;
+    private ?Module $module;
 
     public function getId(): ?int
     {
@@ -70,7 +70,7 @@ class Image
         return $this->module;
     }
 
-    public function setModule(?Module $module): self
+    public function setModule(Module $module): self
     {
         $this->module = $module;
 
