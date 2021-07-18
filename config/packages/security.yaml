@@ -48,4 +48,5 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/api$, roles:  }
+         - { path: ^/api/users/password-(token|refresh)$, roles:  }
          - { path: ^/api/*, roles: IS_AUTHENTICATED_FULLY }

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\ResetPasswordController;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,6 +14,131 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
+#[
+    ApiResource(
+        collectionOperations: [
+            'generateToken' => [
+                'method' => 'POST',
+                'path' => '/users/password-token',
+                'controller' => ResetPasswordController::class,
+                'read' => false,
+                'write' => false,
+
+                'openapi_context' => [
+                    'summary' => 'Step 1 to update a forgotten password',
+                    'description' => 'Generate a token and send a link by email.',
+                    'tags' => ['Forgotten password'],
+
+                    'requestBody' => [
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    'type' => 'object',
+                                    'required' => 'email',
+                                    'properties' => [
+                                        'email' => [
+                                            'type' => 'string',
+                                            'example' => 'admin@domain.net'
+                                        ]
+                                    ]
+                                ],
+                            ]
+                        ]
+                    ],
+                    'responses' => [
+                        '200' => [
+                            'content' => [
+                                'application/json' => [
+                                    'schema' => [
+                                        'type' => 'object',
+
+                                        'properties' => [
+                                            'token' => [
+                                                'type' => 'string',
+                                                'example' => '4155fe05-29bf-4f54-99c0-8141a105fd72'
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+
+        'refreshPassword' => [
+            'method' => 'POST',
+            'path' => '/users/password-refresh',
+            'controller' => ResetPasswordController::class,
+            'read' => false,
+            'write' => false,
+
+            'openapi_context' => [
+                'summary' => 'Step 2 to update a forgotten password',
+                'description' => 'Change the password for an user.',
+                'tags' => ['Forgotten password'],
+
+                'requestBody' => [
+                    'content' => [
+                        'application/json' => [
+                            'schema' => [
+                                'type' => 'object',
+                                'required' => 'password',
+                                'properties' => [
+                                    'token' => [
+                                        'type' => 'string',
+                                        'example' => '4155fe05-29bf-4f54-99c0-8141a105fd72'
+                                    ],
+                                    'password' => [
+                                        'type' => 'string',
+                                        'example' => 'mon_nouveau_mot_de_passe'
+                                    ],
+                                ]
+                            ],
+                        ]
+                    ]
+                ],
+                'responses' => [
+                    '200' => [
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    'type' => 'object',
+
+                                    'properties' => [
+                                        'message' => [
+                                            'type' => 'string',
+                                            'example' => 'Le mot de passe est modifié.'
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ],
+                    '201' => null,
+                    '400' => [
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    'type' => 'object',
+
+                                    'properties' => [
+                                        'message' => [
+                                            'type' => 'string',
+                                            'example' => 'message d\'erreur.'
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+        ],
+        itemOperations: []
+    )
+]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
@@ -19,17 +146,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $email;
+    private string $email;
 
     /**
      * @ORM\Column(type="json")
+     * @var array<string> $roles
      */
-    private $roles = [];
+    private array $roles = [];
 
     /**
      * @var string The hashed password
@@ -40,7 +168,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\OneToMany(targetEntity=Module::class, mappedBy="user", orphanRemoval=true)
      */
-    private $modules;
+    private Collection $modules;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private string|null $passwordToken;
 
     public function __construct()
     {
@@ -52,7 +185,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -94,6 +227,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param array<string> $roles
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -130,7 +266,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
@@ -162,6 +298,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $module->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPasswordToken(): ?string
+    {
+        return $this->passwordToken;
+    }
+
+    public function setPasswordToken(?string $passwordToken): self
+    {
+        $this->passwordToken = $passwordToken;
 
         return $this;
     }

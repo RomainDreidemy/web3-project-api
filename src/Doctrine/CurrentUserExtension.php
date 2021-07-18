@@ -7,6 +7,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInter
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryItemExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
 use App\Entity\Module;
+use App\Entity\User;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -20,6 +21,10 @@ class CurrentUserExtension implements QueryCollectionExtensionInterface, QueryIt
         $this->addWhere($queryBuilder, $resourceClass);
     }
 
+    /**
+     * @param array<string> $identifiers
+     * @param array<string> $context
+     */
     public function applyToItem(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, array $identifiers, string $operationName = null, array $context = []): void
     {
         $this->addWhere($queryBuilder, $resourceClass);
@@ -29,18 +34,23 @@ class CurrentUserExtension implements QueryCollectionExtensionInterface, QueryIt
     {
         $entities = [Module::class];
 
-        if (!in_array($resourceClass, $entities) || null === $user = $this->security->getUser()) {
+        /** @var User|null $user */
+        $user = $this->security->getUser();
+
+        if (!in_array($resourceClass, $entities) || null === $user) {
             return;
         }
 
         $rootAlias = $queryBuilder->getRootAliases()[0];
 
-        match ($resourceClass) {
-            Module::class => $this->module($queryBuilder, $user, $rootAlias)
-        };
+        switch ($resourceClass) {
+            case Module::class:
+                $this->module($queryBuilder, $user, $rootAlias);
+                break;
+        }
     }
 
-    private function module(QueryBuilder $queryBuilder, UserInterface $user,string $rootAlias): void
+    private function module(QueryBuilder $queryBuilder, User $user,string $rootAlias): void
     {
         $queryBuilder
             ->innerJoin(sprintf('%s.user', $rootAlias), 'u')
