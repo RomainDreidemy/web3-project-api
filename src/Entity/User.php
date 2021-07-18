@@ -17,26 +17,28 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[
     ApiResource(
         collectionOperations: [
-            'resetPassword' => [
+            'generateToken' => [
                 'method' => 'POST',
-                'path' => '/users/reset-password',
+                'path' => '/users/password-token',
                 'controller' => ResetPasswordController::class,
                 'read' => false,
                 'write' => false,
 
                 'openapi_context' => [
-                    'security' => [['bearerAuth' => []]],
+                    'summary' => 'Step 1 to update a forgotten password',
+                    'description' => 'Generate a token and send a link by email.',
+                    'tags' => ['Forgotten password'],
 
                     'requestBody' => [
                         'content' => [
                             'application/json' => [
                                 'schema' => [
                                     'type' => 'object',
-                                    'required' => 'password',
+                                    'required' => 'email',
                                     'properties' => [
-                                        'password' => [
+                                        'email' => [
                                             'type' => 'string',
-                                            'example' => 'mon_nouveau_mot_de_passe'
+                                            'example' => 'admin@domain.net'
                                         ]
                                     ]
                                 ],
@@ -44,17 +46,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
                         ]
                     ],
                     'responses' => [
-                        '201' => [
-                            'description' => 'Nombre de résultat',
+                        '200' => [
                             'content' => [
                                 'application/json' => [
                                     'schema' => [
                                         'type' => 'object',
 
                                         'properties' => [
-                                            'password' => [
+                                            'token' => [
                                                 'type' => 'string',
-                                                'example' => 'mon_nouveau_mot_de_passe'
+                                                'example' => '4155fe05-29bf-4f54-99c0-8141a105fd72'
                                             ]
                                         ]
                                     ]
@@ -63,7 +64,77 @@ use Symfony\Component\Security\Core\User\UserInterface;
                         ]
                     ]
                 ]
+            ],
+
+        'refreshPassword' => [
+            'method' => 'POST',
+            'path' => '/users/password-refresh',
+            'controller' => ResetPasswordController::class,
+            'read' => false,
+            'write' => false,
+
+            'openapi_context' => [
+                'summary' => 'Step 2 to update a forgotten password',
+                'description' => 'Change the password for an user.',
+                'tags' => ['Forgotten password'],
+
+                'requestBody' => [
+                    'content' => [
+                        'application/json' => [
+                            'schema' => [
+                                'type' => 'object',
+                                'required' => 'password',
+                                'properties' => [
+                                    'token' => [
+                                        'type' => 'string',
+                                        'example' => '4155fe05-29bf-4f54-99c0-8141a105fd72'
+                                    ],
+                                    'password' => [
+                                        'type' => 'string',
+                                        'example' => 'mon_nouveau_mot_de_passe'
+                                    ],
+                                ]
+                            ],
+                        ]
+                    ]
+                ],
+                'responses' => [
+                    '200' => [
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    'type' => 'object',
+
+                                    'properties' => [
+                                        'message' => [
+                                            'type' => 'string',
+                                            'example' => 'Le mot de passe est modifié.'
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ],
+                    '201' => null,
+                    '400' => [
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    'type' => 'object',
+
+                                    'properties' => [
+                                        'message' => [
+                                            'type' => 'string',
+                                            'example' => 'message d\'erreur.'
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
             ]
+        ]
         ],
         itemOperations: []
     )
@@ -97,6 +168,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=Module::class, mappedBy="user", orphanRemoval=true)
      */
     private $modules;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $passwordToken;
 
     public function __construct()
     {
@@ -218,6 +294,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $module->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPasswordToken(): ?string
+    {
+        return $this->passwordToken;
+    }
+
+    public function setPasswordToken(?string $passwordToken): self
+    {
+        $this->passwordToken = $passwordToken;
 
         return $this;
     }
