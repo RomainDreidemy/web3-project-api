@@ -4,8 +4,6 @@ namespace App\DataFixtures;
 
 use App\Entity\SensorType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 class SensorTypeFixtures extends Fixture
