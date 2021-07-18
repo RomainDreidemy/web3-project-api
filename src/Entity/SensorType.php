@@ -33,7 +33,7 @@ class SensorType
     /**
      * @ORM\OneToMany(targetEntity=Sensor::class, mappedBy="sensorType", orphanRemoval=true)
      */
-    private ArrayCollection $sensors;
+    private Collection $sensors;
 
     /**
      * @ORM\OneToMany(targetEntity=Spec::class, mappedBy="sensorType", orphanRemoval=true)
