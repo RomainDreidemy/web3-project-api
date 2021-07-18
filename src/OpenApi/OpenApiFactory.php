@@ -46,7 +46,7 @@ class OpenApiFactory implements OpenApiFactoryInterface
     {
         /** @var PathItem $path */
         foreach ($openApi->getPaths()->getPaths() as $key => $path){
-            if ($path->getGet() && $path->getGet()->getSummary() === 'hidden'){
+            if (!is_null($path->getGet()) && $path->getGet()->getSummary() === 'hidden'){
                 $openApi->getPaths()->addPath($key, $path->withGet(null));
             }
         }
