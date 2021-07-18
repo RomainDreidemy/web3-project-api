@@ -20,7 +20,7 @@ class SensorRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Sensor[] Returns an array of Sensor objects
+    //  * @return SensorFixtures[] Returns an array of SensorFixtures objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SensorRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Sensor
+    public function findOneBySomeField($value): ?SensorFixtures
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')
