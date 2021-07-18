@@ -26,5 +26,11 @@ services:
         arguments: [ '@App\OpenApi\OpenApiFactory.inner' ]
         autoconfigure: false
 
+    App\Services\MailerService:
+        arguments: [
+                '%env(MAILER_FROM)%',
+                '%env(FRONT_BASE_URL)%'
+        ]
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
