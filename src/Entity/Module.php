@@ -99,7 +99,7 @@ class Module
     }
 
     /**
-     * @return Collection|Sensor[]
+     * @return Collection
      */
     public function getSensors(): Collection
     {
@@ -111,18 +111,6 @@ class Module
         if (!$this->sensors->contains($sensor)) {
             $this->sensors[] = $sensor;
             $sensor->setModule($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSensor(Sensor $sensor): self
-    {
-        if ($this->sensors->removeElement($sensor)) {
-            // set the owning side to null (unless already changed)
-            if ($sensor->getModule() === $this) {
-                $sensor->setModule(null);
-            }
         }
 
         return $this;

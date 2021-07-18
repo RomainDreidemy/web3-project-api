@@ -87,19 +87,7 @@ class SensorType
     {
         if (!$this->sensors->contains($sensor)) {
             $this->sensors[] = $sensor;
-            $sensor->setSensorType($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSensor(Sensor $sensor): self
-    {
-        if ($this->sensors->removeElement($sensor)) {
-            // set the owning side to null (unless already changed)
-            if ($sensor->getSensorType() === $this) {
-                $sensor->setSensorType(null);
-            }
+            $sensor->setType($this);
         }
 
         return $this;

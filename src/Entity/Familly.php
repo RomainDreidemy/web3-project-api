@@ -106,18 +106,6 @@ class Familly
         return $this;
     }
 
-    public function removeSheet(Sheet $sheet): self
-    {
-        if ($this->sheets->removeElement($sheet)) {
-            // set the owning side to null (unless already changed)
-            if ($sheet->getFamilly() === $this) {
-                $sheet->setFamilly(null);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection|Spec[]
      */
@@ -136,18 +124,6 @@ class Familly
         return $this;
     }
 
-    public function removeSpec(Spec $spec): self
-    {
-        if ($this->specs->removeElement($spec)) {
-            // set the owning side to null (unless already changed)
-            if ($spec->getFamilly() === $this) {
-                $spec->setFamilly(null);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection|Module[]
      */
@@ -161,18 +137,6 @@ class Familly
         if (!$this->modules->contains($module)) {
             $this->modules[] = $module;
             $module->setFamilly($this);
-        }
-
-        return $this;
-    }
-
-    public function removeModule(Module $module): self
-    {
-        if ($this->modules->removeElement($module)) {
-            // set the owning side to null (unless already changed)
-            if ($module->getFamilly() === $this) {
-                $module->setFamilly(null);
-            }
         }
 
         return $this;
