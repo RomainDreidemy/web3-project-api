@@ -38,7 +38,7 @@ class SensorType
     /**
      * @ORM\OneToMany(targetEntity=Spec::class, mappedBy="sensorType", orphanRemoval=true)
      */
-    private $specs;
+    private Collection $specs;
 
     public function __construct()
     {

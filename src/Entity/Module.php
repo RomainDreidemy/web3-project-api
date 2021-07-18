@@ -187,16 +187,4 @@ class Module
 
         return $this;
     }
-
-    public function removeImage(Image $image): self
-    {
-        if ($this->images->removeElement($image)) {
-            // set the owning side to null (unless already changed)
-            if ($image->getModule() === $this) {
-                $image->setModule(null);
-            }
-        }
-
-        return $this;
-    }
 }

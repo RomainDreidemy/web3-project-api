@@ -15,7 +15,7 @@ class MailerService
         private MailerInterface $mailer
     ){}
 
-    public function sendPasswordToken(string $to, $token): void
+    public function sendPasswordToken(string $to, string $token): void
     {
         $this->send(
             $to,
