@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Services;
-use Cloudinary\Cloudinary;
+use Cloudinary\Api\ApiResponse;
+use Cloudinary\Api\Upload\UploadApi;
 use Exception;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\FileBag;
 
 class UploadService
 {
@@ -83,25 +83,19 @@ class UploadService
 //        }
 //    }
 //
-//    /**
-//     * The functions allows to upload a file.
-//     * @param File $file
-//     * @param array $options
-//     * @return mixed|null
-//     * @throws Exception
-//     */
-//    public function upload(File $file, array $options = array())
-//    {
-//        try {
-//            if ($file->getClientMimeType() === 'video/mp4') {
-//                $ref = Uploader::upload_large($file, $options);
-//                $ref['format'] = 'mp4';
-//            } else {
-//                $ref = Uploader::upload($file, $options);
-//            }
-//            return $ref;
-//        } catch (Exception $e) {
-//            throw new Exception ($e);
-//        }
-//    }
+    /**
+     * The functions allows to upload a file.
+     * @param File $file
+     * @param array $options
+     * @return ApiResponse
+     * @throws Exception
+     */
+    public function upload(File $file, $options = []): ApiResponse
+    {
+        try {
+           return (new UploadApi())->upload($file, $options);
+        } catch (Exception $e) {
+            throw new Exception ($e);
+        }
+    }
 }
