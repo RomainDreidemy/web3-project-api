@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\Module\ModuleCommentController;
 use App\Repository\CommentRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -15,16 +17,47 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[
     ApiResource(
         collectionOperations: [
-            'POST' => [
-                'normalization_context' => ['groups' => ['Comment:read']],
-                'denormalization_context' => ['groups' => ['Comments:write']],
-                'openapi_context' => ['security' => [['bearerAuth' => []]]]
-            ]
-        ],
+        'POST' => [
+            'normalization_context' => ['groups' => ['Comment:read']],
+            'denormalization_context' => ['groups' => ['Comments:write']],
+            'openapi_context' => ['security' => [['bearerAuth' => []]]]
+        ]
+    ],
         itemOperations: ['GET' => [
             'normalization_context' => ['groups' => ['Module:read']],
             'openapi_context' => ['security' => [['bearerAuth' => []]]]
-        ]]
+        ],
+            'add_comments' => [
+                'normalization_context' => ['groups' => ['Comment:read']],
+                'openapi_context' => [
+                    'security' => [['bearerAuth' => []]],
+                    'requestBody' => [
+                        'content' => [
+                            'multipart/form-data' => [
+                                'schema' => [
+                                    'type' => 'object',
+                                    'properties' => [
+                                        'file' => [
+                                            'type' => 'string',
+                                            'format' => 'binary',
+                                        ],
+                                        'text' => [
+                                            'type' => 'string',
+                                            'format' => 'text',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                'method' => 'POST',
+                'controller' => ModuleCommentController::class,
+                'path' => 'modules/{id}/comment',
+                'read' => false,
+                'write' => false
+            ]
+        ]
     )
 ]
 class Comment
@@ -47,7 +80,7 @@ class Comment
      * @ORM\Column(type="datetime_immutable")
      */
     #[Groups(['Module:read', 'Comment:read'])]
-    private \DateTimeImmutable $created_at;
+    private DateTimeImmutable $created_at;
 
     /**
      * @ORM\ManyToOne(targetEntity=Module::class, inversedBy="comments")
@@ -64,7 +97,7 @@ class Comment
 
     public function __construct()
     {
-        $this->created_at = new \DateTimeImmutable();
+        $this->created_at = new DateTimeImmutable();
         $this->images = new ArrayCollection();
     }
 
@@ -85,12 +118,12 @@ class Comment
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    public function setCreatedAt(DateTimeImmutable $created_at): self
     {
         $this->created_at = $created_at;
 
