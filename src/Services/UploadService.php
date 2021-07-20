@@ -3,19 +3,21 @@
 namespace App\Services;
 use Cloudinary\Api\ApiResponse;
 use Cloudinary\Api\Upload\UploadApi;
+use Cloudinary\Configuration\Configuration;
 use Exception;
 use Symfony\Component\HttpFoundation\File\File;
 
 class UploadService
 {
-    public function __construct()
+    public function __construct(private string $cloudName,
+                                private string $cloudApiKey,
+                                private string $cloudApiSecret)
     {
-//        Cloudinary::config(array(
-//            "cloud_name" => $_SERVER['CLOUDINARY_NAME'],
-//            "api_key" => $_SERVER['CLOUDINARY_KEY'],
-//            "api_secret" => $_SERVER['CLOUDINARY_SECRET'],
-//            "secure" => true
-//        ));
+        $config = Configuration::instance();
+        $config->cloud->cloudName = $cloudName;
+        $config->cloud->apiKey = $cloudApiKey;
+        $config->cloud->apiSecret = $cloudApiSecret;
+        $config->url->secure = true;
     }
 //
 //    /**
@@ -93,7 +95,9 @@ class UploadService
     public function upload(File $file, $options = []): ApiResponse
     {
         try {
-           return (new UploadApi())->upload($file, $options);
+
+
+            return (new UploadApi())->upload($file->getPathname(), $options);
         } catch (Exception $e) {
             throw new Exception ($e);
         }
