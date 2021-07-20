@@ -95,6 +95,16 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'read' => false,
                 'write' => false
             ],
+            'remove_comment' => [
+                'openapi_context' => [
+                    'security' => [['bearerAuth' => []]]
+                ],
+                'method' => 'DELETE',
+                'controller' => ModuleCommentController::class,
+                'path' => 'comments/{comment}',
+                'read' => false,
+                'write' => false
+            ],
             'edition_comment' => [
                 'normalization_context' => ['groups' => ['Comment:read']],
                 'openapi_context' => [

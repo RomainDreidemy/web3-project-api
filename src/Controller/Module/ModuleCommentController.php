@@ -156,4 +156,30 @@ class ModuleCommentController extends AbstractController
             return $this->json($e, 400);
         }
     }
+
+    #[Route('/api/comments/{id}', name: 'module_comment_remove', methods: ['DELETE'])]
+    public function moduleCommentRemove(
+        string $id,
+        CommentRepository $commentRepository,
+        UploadService $uploadService,
+        EntityManagerInterface $manager,
+        NormalizerInterface $normalizer
+    ): JsonResponse
+    {
+        try {
+            if (!$comment = $commentRepository->find($id)) {
+                return $this->json('Comment not found', 404);
+            }
+            foreach ($comment->getImages() as $image) {
+                $uploadService->remove($image->getPublicId());
+                $manager->remove($image);
+            }
+            $manager->remove($comment);
+            $manager->flush();
+
+            return $this->json('Comment removed');
+        } catch (Exception | ExceptionInterface $e) {
+            return $this->json($e, 400);
+        }
+    }
 }
