@@ -3,6 +3,7 @@
 namespace App\Controller\Module;
 
 use App\Entity\Module;
+use App\Repository\ModuleRepository;
 use App\Services\UploadService;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,12 +16,15 @@ class ModuleImageController extends AbstractController
 {
     #[Route('/modules/{id}/images', name: 'module_images_create' ,methods: ['POST'])]
     public function moduleImagesCreate(
-        Module $module,
+        string $id,
+        ModuleRepository $moduleRepository,
         UploadService $uploadService,
         Request $request
     ): JsonResponse
     {
         try {
+        $module = $moduleRepository->find($id);
+
         $files = $request->files;
 
         foreach ($files as $file) {
