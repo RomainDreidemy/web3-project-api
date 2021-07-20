@@ -181,22 +181,4 @@ class Module
 
         return $this;
     }
-
-    /**
-     * @return Collection|Image[]
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Image $image): self
-    {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setModule($this);
-        }
-
-        return $this;
-    }
 }

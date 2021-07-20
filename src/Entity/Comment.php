@@ -120,7 +120,7 @@ class Comment
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="comment")
      */
     #[Groups(['Module:read', 'Comment:read'])]
-    private $images;
+    private Collection $images;
 
     public function __construct()
     {

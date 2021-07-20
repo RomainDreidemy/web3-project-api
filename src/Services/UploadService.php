@@ -38,8 +38,8 @@ class UploadService
     /**
      * The function allows to upload a file.
      * @param File $file
-     * @param array $options
-     * @return ApiResponse
+     * @param string[] $options
+     * @return ApiResponse<array>
      * @throws Exception
      */
     public function upload(File $file, array $options): ApiResponse
@@ -53,10 +53,10 @@ class UploadService
 
     /**
      * The function overwrites options data.
-     * @param $options
-     * @return array
+     * @param string[] $options
+     * @return string[]
      */
-    private function overwriteOptions($options): array
+    private function overwriteOptions(array $options): array
     {
         $options['folder'] = "{$this->appEnv}/{$options['folder']}";
 

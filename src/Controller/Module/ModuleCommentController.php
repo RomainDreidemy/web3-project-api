@@ -22,6 +22,9 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class ModuleCommentController extends AbstractController
 {
+    /**
+     * @var array|string[]
+     */
     protected array $moduleCommentsImagesOptions = [
         'folder' => 'comments',
     ];
