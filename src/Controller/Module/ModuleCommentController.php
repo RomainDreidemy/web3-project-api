@@ -26,6 +26,30 @@ class ModuleCommentController extends AbstractController
         'folder' => 'comments',
     ];
 
+    /**
+     * @param UploadService $uploadService
+     * @param Comment $comment
+     * @param File $file
+     * @return Image
+     * @throws Exception
+     */
+    private function addImage(UploadService $uploadService, Comment $comment, File $file): Image
+    {
+        try {
+            $fileUploaded = $uploadService->upload($file, $this->moduleCommentsImagesOptions);
+            $newImage = (new Image())
+                ->setComment($comment)
+                ->setCreatedAt(new DateTimeImmutable($fileUploaded['created_at']))
+                ->setFormat($fileUploaded['format'])
+                ->setPublicId($fileUploaded['public_id'])
+                ->setSecureUrl($fileUploaded['secure_url']);
+            $comment->addImage($newImage);
+            return $newImage;
+        } catch (Exception $e) {
+            throw new Exception($e);
+        }
+    }
+
     #[Route('/api/modules/{id}/comment', name: 'module_comment_create', methods: ['POST'])]
     public function moduleCommentCreate(
         string $id,
@@ -71,7 +95,7 @@ class ModuleCommentController extends AbstractController
             if (!$comment = $commentRepository->find($id)) {
                 return $this->json('Comment not found', 404);
             }
-            $file = $request->files->get('commentImage');
+            $file = $request->files->get(CommentKeys::commentImage);
             $newImage = $this->addImage($uploadService, $comment, $file);
             $comment->addImage($newImage);
             $manager->persist($newImage);
@@ -81,30 +105,6 @@ class ModuleCommentController extends AbstractController
             return $this->json($normalizer->normalize($comment, 'json', ['groups' => 'Comment:read']));
         } catch (Exception | ExceptionInterface $e) {
             return $this->json($e, 400);
-        }
-    }
-
-    /**
-     * @param UploadService $uploadService
-     * @param Comment $comment
-     * @param File $file
-     * @return Image
-     * @throws Exception
-     */
-    private function addImage(UploadService $uploadService, Comment $comment, File $file): Image
-    {
-        try {
-            $fileUploaded = $uploadService->upload($file, $this->moduleCommentsImagesOptions);
-            $newImage = (new Image())
-                ->setComment($comment)
-                ->setCreatedAt(new DateTimeImmutable($fileUploaded['created_at']))
-                ->setFormat($fileUploaded['format'])
-                ->setPublicId($fileUploaded['public_id'])
-                ->setSecureUrl($fileUploaded['secure_url']);
-            $comment->addImage($newImage);
-            return $newImage;
-        } catch (Exception $e) {
-            throw new Exception($e);
         }
     }
 }

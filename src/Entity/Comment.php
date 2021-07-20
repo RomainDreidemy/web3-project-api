@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Controller\Module\ModuleCommentController;
+use App\Enums\CommentKeys;
 use App\Repository\CommentRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -41,7 +42,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
                                             'type' => 'string',
                                             'format' => 'binary',
                                         ],
-                                        'text' => [
+                                        CommentKeys::text => [
                                             'type' => 'string',
                                             'format' => 'text',
                                         ],
@@ -54,6 +55,32 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'method' => 'POST',
                 'controller' => ModuleCommentController::class,
                 'path' => 'modules/{id}/comment',
+                'read' => false,
+                'write' => false
+            ],
+            'add_image_to_comment' => [
+                'normalization_context' => ['groups' => ['Comment:read']],
+                'openapi_context' => [
+                    'security' => [['bearerAuth' => []]],
+                    'requestBody' => [
+                        'content' => [
+                            'multipart/form-data' => [
+                                'schema' => [
+                                    'type' => 'object',
+                                    'properties' => [
+                                        CommentKeys::commentImage => [
+                                            'type' => 'string',
+                                            'format' => 'binary',
+                                        ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                'method' => 'POST',
+                'controller' => ModuleCommentController::class,
+                'path' => 'comments/{id}/image',
                 'read' => false,
                 'write' => false
             ]
