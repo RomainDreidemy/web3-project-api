@@ -8,11 +8,12 @@ use App\Services\UploadService;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
-use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 
 class ModuleImageController extends AbstractController
@@ -21,12 +22,13 @@ class ModuleImageController extends AbstractController
         'folder' => 'modules',
     ];
 
-    #[Route('/modules/{id}/images', name: 'module_images_create', methods: ['POST'])]
+    #[Route('/api/modules/{id}/images', name: 'module_images_create', methods: ['POST'])]
     public function moduleImagesCreate(
         string $id,
         ModuleRepository $moduleRepository,
         UploadService $uploadService,
         EntityManagerInterface $manager,
+        NormalizerInterface $normalizer,
         Request $request
     ): JsonResponse
     {
@@ -52,11 +54,9 @@ class ModuleImageController extends AbstractController
 
             $manager->flush();
 
-            return $this->json([
-                '$data' => '$uploadService->upload($file)',
-            ]);
+            return $this->json($normalizer->normalize($module->getImages(), 'json', ['groups' => 'Module:read']));
 
-        } catch (Exception $e) {
+        } catch (Exception | ExceptionInterface $e) {
             return $this->json($e, 400);
         }
     }
