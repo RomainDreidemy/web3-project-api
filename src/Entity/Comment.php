@@ -94,7 +94,33 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'path' => 'comments/image/{image}',
                 'read' => false,
                 'write' => false
-            ]
+            ],
+            'edition_comment' => [
+                'normalization_context' => ['groups' => ['Comment:read']],
+                'openapi_context' => [
+                    'security' => [['bearerAuth' => []]],
+                    'requestBody' => [
+                        'content' => [
+                            'multipart/form-data' => [
+                                'schema' => [
+                                    'type' => 'object',
+                                    'properties' => [
+                                        CommentKeys::text => [
+                                            'type' => 'string',
+                                            'format' => 'text',
+                                        ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                'method' => 'PATCH',
+                'controller' => ModuleCommentController::class,
+                'path' => '/comments/{comment}',
+                'read' => false,
+                'write' => false
+            ],
         ]
     )
 ]
