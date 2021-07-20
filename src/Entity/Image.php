@@ -19,12 +19,6 @@ class Image
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    #[Groups(['Module:read'])]
-    private string $name;
-
-    /**
      * @ORM\Column(type="datetime_immutable")
      */
     #[Groups(['Module:read'])]
@@ -36,21 +30,25 @@ class Image
      */
     private ?Module $module;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    #[Groups(['Module:read'])]
+    private ?string $secureUrl;
+
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    private ?string $format;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private ?string $publicId;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable
@@ -73,6 +71,42 @@ class Image
     public function setModule(Module $module): self
     {
         $this->module = $module;
+
+        return $this;
+    }
+
+    public function getSecureUrl(): ?string
+    {
+        return $this->secureUrl;
+    }
+
+    public function setSecureUrl(string $secureUrl): self
+    {
+        $this->secureUrl = $secureUrl;
+
+        return $this;
+    }
+
+    public function getFormat(): ?string
+    {
+        return $this->format;
+    }
+
+    public function setFormat(string $format): self
+    {
+        $this->format = $format;
+
+        return $this;
+    }
+
+    public function getPublicId(): ?string
+    {
+        return $this->publicId;
+    }
+
+    public function setPublicId(string $publicId): self
+    {
+        $this->publicId = $publicId;
 
         return $this;
     }

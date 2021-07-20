@@ -2,8 +2,11 @@
 
 namespace App\Controller\Module;
 
+use App\Entity\Image;
 use App\Repository\ModuleRepository;
 use App\Services\UploadService;
+use DateTimeImmutable;
+use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,19 +26,31 @@ class ModuleImageController extends AbstractController
         string $id,
         ModuleRepository $moduleRepository,
         UploadService $uploadService,
+        EntityManagerInterface $manager,
         Request $request
     ): JsonResponse
     {
         try {
-            $module = $moduleRepository->find($id);
+            if (!$module = $moduleRepository->find($id)) {
+                return $this->json('Module not found', 404);
+            }
 
             $files = $request->files;
 
             foreach ($files as $file) {
-                return $this->json([
-                    '$data' => $uploadService->upload($file, $this->moduleImagesOptions),
-                ]);
+                $fileUploaded = $uploadService->upload($file, $this->moduleImagesOptions);
+
+                $newImage = (new Image())
+                    ->setModule($module)
+                    ->setCreatedAt(new DateTimeImmutable($fileUploaded['created_at']))
+                    ->setFormat($fileUploaded['format'])
+                    ->setPublicId($fileUploaded['public_id'])
+                    ->setSecureUrl($fileUploaded['secure_url']);
+
+                $manager->persist($newImage);
             }
+
+            $manager->flush();
 
             return $this->json([
                 '$data' => '$uploadService->upload($file)',
