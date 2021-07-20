@@ -37,7 +37,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
                                 'schema' => [
                                     'type' => 'object',
                                     'properties' => [
-                                        'file' => [
+                                        'files[]' => [
                                             'type' => 'string',
                                             'format' => 'binary',
                                         ],
