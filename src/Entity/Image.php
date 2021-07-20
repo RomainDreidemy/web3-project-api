@@ -21,19 +21,13 @@ class Image
     /**
      * @ORM\Column(type="datetime_immutable")
      */
-    #[Groups(['Module:read'])]
+    #[Groups(['Module:read', 'Comment:read'])]
     private \DateTimeImmutable $created_at;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Module::class, inversedBy="images")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private ?Module $module;
 
     /**
      * @ORM\Column(type="text")
      */
-    #[Groups(['Module:read'])]
+    #[Groups(['Module:read', 'Comment:read'])]
     private ?string $secureUrl;
 
     /**
@@ -45,6 +39,11 @@ class Image
      * @ORM\Column(type="string", length=150)
      */
     private ?string $publicId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Comment::class, inversedBy="images")
+     */
+    private ?Comment $comment;
 
     public function getId(): ?int
     {
@@ -59,18 +58,6 @@ class Image
     public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
         $this->created_at = $created_at;
-
-        return $this;
-    }
-
-    public function getModule(): ?Module
-    {
-        return $this->module;
-    }
-
-    public function setModule(Module $module): self
-    {
-        $this->module = $module;
 
         return $this;
     }
@@ -107,6 +94,18 @@ class Image
     public function setPublicId(string $publicId): self
     {
         $this->publicId = $publicId;
+
+        return $this;
+    }
+
+    public function getComment(): ?Comment
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?Comment $comment): self
+    {
+        $this->comment = $comment;
 
         return $this;
     }

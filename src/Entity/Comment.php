@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CommentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -14,7 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     ApiResource(
         collectionOperations: [
             'POST' => [
-                'normalization_context' => ['groups' => ['Comments:read']],
+                'normalization_context' => ['groups' => ['Comment:read']],
                 'denormalization_context' => ['groups' => ['Comments:write']],
                 'openapi_context' => ['security' => [['bearerAuth' => []]]]
             ]
@@ -32,19 +34,19 @@ class Comment
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Module:read'])]
+    #[Groups(['Module:read', 'Comment:read'])]
     private int $id;
 
     /**
      * @ORM\Column(type="text")
      */
-    #[Groups(['Module:read', 'Comments:write'])]
+    #[Groups(['Module:read', 'Comments:write', 'Comment:read'])]
     private string $text;
 
     /**
      * @ORM\Column(type="datetime_immutable")
      */
-    #[Groups(['Module:read'])]
+    #[Groups(['Module:read', 'Comment:read'])]
     private \DateTimeImmutable $created_at;
 
     /**
@@ -54,9 +56,16 @@ class Comment
     #[Groups(['Comments:write'])]
     private ?Module $module;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="comment")
+     */
+    #[Groups(['Module:read', 'Comment:read'])]
+    private $images;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -96,6 +105,36 @@ class Comment
     public function setModule(?Module $module): self
     {
         $this->module = $module;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setComment($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getComment() === $this) {
+                $image->setComment(null);
+            }
+        }
 
         return $this;
     }
