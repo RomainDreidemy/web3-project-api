@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\ModuleSensorController;
 use App\Repository\ModuleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -21,10 +22,19 @@ use Symfony\Component\Validator\Constraints\NotNull;
             'openapi_context' => ['security' => [['bearerAuth' => []]]]
         ]
     ],
-        itemOperations: ['GET' => [
-        'normalization_context' => ['groups' => ['Module:read']],
-        'openapi_context' => ['security' => [['bearerAuth' => []]]]
-    ]],
+        itemOperations: [
+            'GET' => [
+                'normalization_context' => ['groups' => ['Module:read']],
+                'openapi_context' => ['security' => [['bearerAuth' => []]]]
+            ],
+            'Module sensor' => [
+                'method' => 'GET',
+                'path' => '/api/modules/{id}/sensors',
+                'controller' => ModuleSensorController::class,
+                'openapi_context' => ['security' => [['bearerAuth' => []]]]
+
+            ],
+        ],
         paginationEnabled: false,
     )
 ]

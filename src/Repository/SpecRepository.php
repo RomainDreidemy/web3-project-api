@@ -19,22 +19,26 @@ class SpecRepository extends ServiceEntityRepository
         parent::__construct($registry, Spec::class);
     }
 
-    // /**
-    //  * @return Spec[] Returns an array of Spec objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findOneBySensorTypeAndFamily(int $sensorTypeId, int $familyId): ?Spec
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
+            ->innerJoin('s.familly', 'f')
+            ->innerJoin('s.sensorType', 't')
+
+            ->where('t.id = :sensorTypeId')
+            ->andWhere('f.id = :familyId')
+            ->setParameters([
+                'sensorTypeId' => $sensorTypeId,
+                'familyId' => $familyId
+            ])
+            ->setMaxResults(1)
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Spec
