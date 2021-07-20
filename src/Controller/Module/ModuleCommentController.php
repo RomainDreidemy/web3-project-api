@@ -135,7 +135,7 @@ class ModuleCommentController extends AbstractController
         }
     }
 
-    #[Route('/api/comments/{id}', name: 'module_comment_edition', methods: ['POST'])]
+    #[Route('/api/comments/{id}', name: 'module_comment_edition', methods: ['PATCH'])]
     public function moduleCommentEdition(
         string $id,
         CommentRepository $commentRepository,
