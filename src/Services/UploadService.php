@@ -2,6 +2,7 @@
 
 namespace App\Services;
 use Cloudinary\Api\ApiResponse;
+use Cloudinary\Api\BaseApiClient;
 use Cloudinary\Api\Upload\UploadApi;
 use Cloudinary\Configuration\Configuration;
 use Exception;
@@ -21,19 +22,20 @@ class UploadService
         $config->url->secure = true;
     }
 
-//    /**
-//     * The function allows to delete an image.
-//     * @param $publicId
-//     * @throws Exception
-//     */
-//    public function remove(string $publicId): void
-//    {
-//        try {
-//            Uploader::destroy($publicId);
-//        } catch (Exception $e) {
-//            throw new Exception($e);
-//        }
-//    }
+    /**
+     * The function allows to delete a file.
+     * @param $publicId
+     * @return ApiResponse
+     * @throws Exception
+     */
+    public function remove(string $publicId): ApiResponse
+    {
+        try {
+           return (new UploadApi())->destroy($publicId);
+        } catch (Exception $e) {
+            throw new Exception($e);
+        }
+    }
 
     /**
      * The function allows to upload a file.

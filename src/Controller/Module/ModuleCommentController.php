@@ -6,6 +6,7 @@ use App\Entity\Comment;
 use App\Entity\Image;
 use App\Enums\CommentKeys;
 use App\Repository\CommentRepository;
+use App\Repository\ImageRepository;
 use App\Repository\ModuleRepository;
 use App\Services\UploadService;
 use DateTimeImmutable;
@@ -106,6 +107,29 @@ class ModuleCommentController extends AbstractController
             $manager->flush();
 
             return $this->json($normalizer->normalize($comment, 'json', ['groups' => 'Comment:read']));
+        } catch (Exception | ExceptionInterface $e) {
+            return $this->json($e, 400);
+        }
+    }
+
+    #[Route('/api/comments/image/{id}', name: 'module_comment_remove_image', methods: ['DELETE'])]
+    public function moduleCommentRemoveImage(
+        string $id,
+        ImageRepository $imageRepository,
+        UploadService $uploadService,
+        EntityManagerInterface $manager,
+        NormalizerInterface $normalizer
+    ): JsonResponse
+    {
+        try {
+            if (!$image = $imageRepository->find($id)) {
+                return $this->json('Image not found', 404);
+            }
+            $uploadService->remove($image->getPublicId());
+            $manager->remove($image);
+            $manager->flush();
+
+            return $this->json($normalizer->normalize($image->getComment(), 'json', ['groups' => 'Comment:read']));
         } catch (Exception | ExceptionInterface $e) {
             return $this->json($e, 400);
         }

@@ -54,7 +54,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 ],
                 'method' => 'POST',
                 'controller' => ModuleCommentController::class,
-                'path' => 'modules/{id}/comment',
+                'path' => 'modules/{module}/comment',
                 'read' => false,
                 'write' => false
             ],
@@ -80,7 +80,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 ],
                 'method' => 'POST',
                 'controller' => ModuleCommentController::class,
-                'path' => 'comments/{id}/image',
+                'path' => 'comments/{comment}/image',
+                'read' => false,
+                'write' => false
+            ],
+            'remove_image_to_comment' => [
+                'normalization_context' => ['groups' => ['Comment:read']],
+                'openapi_context' => [
+                    'security' => [['bearerAuth' => []]]
+                ],
+                'method' => 'DELETE',
+                'controller' => ModuleCommentController::class,
+                'path' => 'comments/image/{image}',
                 'read' => false,
                 'write' => false
             ]
