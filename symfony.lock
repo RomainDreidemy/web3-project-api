@@ -138,6 +138,9 @@
     "guzzlehttp/psr7": {
         "version": "2.0.0"
     },
+    "influxdata/influxdb-client-php": {
+        "version": "2.0.0"
+    },
     "laminas/laminas-code": {
         "version": "4.4.2"
     },
@@ -216,6 +219,12 @@
     "psr/log": {
         "version": "1.1.4"
     },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
+    },
+    "shrikeh/teapot": {
+        "version": "v2.3.1"
+    },
     "symfony/apache-pack": {
         "version": "1.0",
         "recipe": {
@@ -227,12 +236,6 @@
         "files": [
             "public/.htaccess"
         ]
-    },
-    "ralouphie/getallheaders": {
-        "version": "3.0.3"
-    },
-    "shrikeh/teapot": {
-        "version": "v2.3.1"
     },
     "symfony/asset": {
         "version": "v5.3.2"
