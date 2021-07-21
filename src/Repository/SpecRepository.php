@@ -20,7 +20,7 @@ class SpecRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Spec[] Returns an array of Spec objects
+    //  * @return SpecFixtures[] Returns an array of SpecFixtures objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SpecRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Spec
+    public function findOneBySomeField($value): ?SpecFixtures
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')
