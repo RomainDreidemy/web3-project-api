@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\Module\ModuleImageController;
 use App\Repository\ModuleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -24,7 +25,17 @@ use Symfony\Component\Validator\Constraints\NotNull;
         itemOperations: ['GET' => [
         'normalization_context' => ['groups' => ['Module:read']],
         'openapi_context' => ['security' => [['bearerAuth' => []]]]
-    ]],
+    ],
+        'add_images' => [
+            'normalization_context' => ['groups' => ['Modules:read']],
+            'openapi_context' => ['security' => [['bearerAuth' => []]]],
+            'method' => 'POST',
+            'controller' => ModuleImageController::class,
+            'path' => '/modules/{id}/images',
+            'read' => false,
+            'write' => false
+        ]
+    ],
         paginationEnabled: false,
     )
 ]
@@ -47,6 +58,7 @@ class Module
     /**
      * @ORM\OneToMany(targetEntity=Sensor::class, mappedBy="module", orphanRemoval=true)
      */
+    #[Groups(['Modules:read', 'Module:read'])]
     private Collection $sensors;
 
     /**
@@ -165,24 +177,6 @@ class Module
             if ($comment->getModule() === $this) {
                 $comment->setModule(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Image[]
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Image $image): self
-    {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setModule($this);
         }
 
         return $this;
