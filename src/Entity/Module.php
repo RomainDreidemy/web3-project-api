@@ -37,7 +37,7 @@ use Symfony\Component\Validator\Constraints\NotNull;
                 ],
                 'method' => 'GET',
                 'controller' => ModuleSensorController::class,
-                'path' => '/modules/{id}/actions',
+                'path' => '/modules/{id}/sensors',
                 'read' => false,
                 'write' => false
             ]
