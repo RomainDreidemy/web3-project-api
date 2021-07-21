@@ -23,4 +23,13 @@ class InfluxService
     $this->queryApi = $client->createQueryApi();
   }
 
+  public function getLastMeasurementsByNodeId($nodeId)
+  {
+    $query = "from(bucket: \"{$this->bucket}\")
+              |> range(start: -1h)
+              |> filter(fn: (r) => r[\"Node_ID\"] == \"{$nodeId}\")
+              |> last()";
+
+    return $this->queryApi->query($query);
+  }
 }
