@@ -36,14 +36,14 @@ class SensorType
     private Collection $sensors;
 
     /**
-     * @ORM\OneToMany(targetEntity=Spec::class, mappedBy="sensorType", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=ActionCondition::class, mappedBy="sensorType")
      */
-    private Collection $specs;
+    private $actionConditions;
 
     public function __construct()
     {
         $this->sensors = new ArrayCollection();
-        $this->specs = new ArrayCollection();
+        $this->actionConditions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,29 +94,29 @@ class SensorType
     }
 
     /**
-     * @return Collection|Spec[]
+     * @return Collection|ActionCondition[]
      */
-    public function getSpecs(): Collection
+    public function getActionConditions(): Collection
     {
-        return $this->specs;
+        return $this->actionConditions;
     }
 
-    public function addSpec(Spec $spec): self
+    public function addActionCondition(ActionCondition $actionCondition): self
     {
-        if (!$this->specs->contains($spec)) {
-            $this->specs[] = $spec;
-            $spec->setSensorType($this);
+        if (!$this->actionConditions->contains($actionCondition)) {
+            $this->actionConditions[] = $actionCondition;
+            $actionCondition->setSensorType($this);
         }
 
         return $this;
     }
 
-    public function removeSpec(Spec $spec): self
+    public function removeActionCondition(ActionCondition $actionCondition): self
     {
-        if ($this->specs->removeElement($spec)) {
+        if ($this->actionConditions->removeElement($actionCondition)) {
             // set the owning side to null (unless already changed)
-            if ($spec->getSensorType() === $this) {
-                $spec->setSensorType(null);
+            if ($actionCondition->getSensorType() === $this) {
+                $actionCondition->setSensorType(null);
             }
         }
 
