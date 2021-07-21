@@ -86,6 +86,11 @@ class Module
     #[Groups(['Module:read'])]
     private Collection $images;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $influxId;
+
     public function __construct()
     {
         $this->sensors = new ArrayCollection();
@@ -178,6 +183,18 @@ class Module
                 $comment->setModule(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getInfluxId(): ?int
+    {
+        return $this->influxId;
+    }
+
+    public function setInfluxId(int $influxId): self
+    {
+        $this->influxId = $influxId;
 
         return $this;
     }

@@ -40,5 +40,14 @@ services:
                 '%env(CLOUDINARY_SECRET)%'
         ]
 
+    App\Services\InfluxService:
+        arguments: [
+            '%env(INFLUXDB_URL)%',
+            '%env(INFLUXDB_TOKEN)%',
+            '%env(INFLUXDB_BUCKET)%',
+            '%env(INFLUXDB_ORG)%'
+        ]
+
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
