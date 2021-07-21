@@ -19,38 +19,35 @@ class Image
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    #[Groups(['Module:read'])]
-    private string $name;
-
-    /**
      * @ORM\Column(type="datetime_immutable")
      */
-    #[Groups(['Module:read'])]
+    #[Groups(['Module:read', 'Comment:read'])]
     private \DateTimeImmutable $created_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Module::class, inversedBy="images")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="text")
      */
-    private ?Module $module;
+    #[Groups(['Module:read', 'Comment:read'])]
+    private ?string $secureUrl;
+
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    private ?string $format;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private ?string $publicId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Comment::class, inversedBy="images")
+     */
+    private ?Comment $comment;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable
@@ -65,14 +62,50 @@ class Image
         return $this;
     }
 
-    public function getModule(): ?Module
+    public function getSecureUrl(): ?string
     {
-        return $this->module;
+        return $this->secureUrl;
     }
 
-    public function setModule(Module $module): self
+    public function setSecureUrl(string $secureUrl): self
     {
-        $this->module = $module;
+        $this->secureUrl = $secureUrl;
+
+        return $this;
+    }
+
+    public function getFormat(): ?string
+    {
+        return $this->format;
+    }
+
+    public function setFormat(string $format): self
+    {
+        $this->format = $format;
+
+        return $this;
+    }
+
+    public function getPublicId(): ?string
+    {
+        return $this->publicId;
+    }
+
+    public function setPublicId(string $publicId): self
+    {
+        $this->publicId = $publicId;
+
+        return $this;
+    }
+
+    public function getComment(): ?Comment
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?Comment $comment): self
+    {
+        $this->comment = $comment;
 
         return $this;
     }
