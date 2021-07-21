@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JetBrains\PhpStorm\Pure;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SensorTypeRepository::class)
@@ -18,11 +19,13 @@ class SensorType
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['Actions:read'])]
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['Actions:read'])]
     private ?string $name;
 
     /**

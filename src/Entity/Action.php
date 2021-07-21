@@ -6,6 +6,7 @@ use App\Repository\ActionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ActionRepository::class)
@@ -17,17 +18,22 @@ class Action
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['Actions:read'])]
     private $id;
 
     /**
      * @ORM\Column(type="text")
      */
+    #[Groups(['Actions:read'])]
     private $text;
 
     /**
      * @ORM\ManyToMany(targetEntity=ActionCondition::class, inversedBy="actions")
      */
     private $actionCondition;
+
+    #[Groups(['Actions:read'])]
+    private ?SensorType $sensorType;
 
     public function __construct()
     {
@@ -71,6 +77,32 @@ class Action
     public function removeActionCondition(ActionCondition $actionCondition): self
     {
         $this->actionCondition->removeElement($actionCondition);
+
+        return $this;
+    }
+
+    /**
+     * @param int $sensorTypeId
+     */
+    public function setSensorTypeId(int $sensorTypeId): void
+    {
+        $this->sensorTypeId = $sensorTypeId;
+    }
+
+    /**
+     * @return SensorType|null
+     */
+    public function getSensorType(): ?SensorType
+    {
+        return $this->sensorType;
+    }
+
+    /**
+     * @param SensorType|null $sensorType
+     */
+    public function setSensorType(?SensorType $sensorType): self
+    {
+        $this->sensorType = $sensorType;
 
         return $this;
     }

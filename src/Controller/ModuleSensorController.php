@@ -2,20 +2,19 @@
 
 namespace App\Controller;
 
+use App\Entity\Module;
+use App\Repository\ModuleRepository;
 use App\Services\ModuleService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
 
 class ModuleSensorController extends AbstractController
 {
-    public function __construct(private ModuleService $moduleService)
+    public function __construct(private ModuleService $moduleService, private ModuleRepository $moduleRepository)
     {
     }
 
-    #[Route('/api/modules/{id}/sensors', name: 'module_sensors', methods: ['GET'])]
-    public function index(int $id): JsonResponse|array
+    public function __invoke(int $id): array
     {
-        return $this->moduleService->getInformations($id);
+        return $this->moduleService->getActions($id);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\ActionCondition;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,22 +20,22 @@ class ActionConditionRepository extends ServiceEntityRepository
         parent::__construct($registry, ActionCondition::class);
     }
 
-    // /**
-    //  * @return ActionCondition[] Returns an array of ActionCondition objects
-    //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findBySensorTypeAndFamily(int $sensorTypeId, int $familyId): array
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+            ->innerJoin('a.family', 'f')
+            ->innerJoin('a.sensorType', 's')
+            ->where('s.id = :sensorTypeId')
+            ->andWhere('f.id = :familyId')
+            ->setParameters([
+                'sensorTypeId' => $sensorTypeId,
+                'familyId' => $familyId
+            ])
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?ActionCondition
