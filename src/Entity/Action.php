@@ -18,13 +18,13 @@ class Action
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Actions:read'])]
+    #[Groups(['Actions:read', 'SensorData:read'])]
     private $id;
 
     /**
      * @ORM\Column(type="text")
      */
-    #[Groups(['Actions:read'])]
+    #[Groups(['Actions:read', 'SensorData:read'])]
     private $text;
 
     /**

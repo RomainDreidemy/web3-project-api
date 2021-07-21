@@ -19,13 +19,13 @@ class SensorType
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Actions:read'])]
+    #[Groups(['Actions:read', 'SensorData:read'])]
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    #[Groups(['Actions:read'])]
+    #[Groups(['Actions:read', 'SensorData:read'])]
     private ?string $name;
 
     /**
@@ -43,10 +43,21 @@ class SensorType
      */
     private $actionConditions;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $inflexId;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Spec::class, mappedBy="sensorType")
+     */
+    private $specs;
+
     public function __construct()
     {
         $this->sensors = new ArrayCollection();
         $this->actionConditions = new ArrayCollection();
+        $this->specs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -120,6 +131,48 @@ class SensorType
             // set the owning side to null (unless already changed)
             if ($actionCondition->getSensorType() === $this) {
                 $actionCondition->setSensorType(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getInflexId(): ?string
+    {
+        return $this->inflexId;
+    }
+
+    public function setInflexId(string $inflexId): self
+    {
+        $this->inflexId = $inflexId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Spec[]
+     */
+    public function getSpecs(): Collection
+    {
+        return $this->specs;
+    }
+
+    public function addSpec(Spec $spec): self
+    {
+        if (!$this->specs->contains($spec)) {
+            $this->specs[] = $spec;
+            $spec->setSensorType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSpec(Spec $spec): self
+    {
+        if ($this->specs->removeElement($spec)) {
+            // set the owning side to null (unless already changed)
+            if ($spec->getSensorType() === $this) {
+                $spec->setSensorType(null);
             }
         }
 

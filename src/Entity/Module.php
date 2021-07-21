@@ -29,7 +29,7 @@ use Symfony\Component\Validator\Constraints\NotNull;
                 'openapi_context' => ['security' => [['bearerAuth' => []]]]
             ],
             'sensors_informations' => [
-                'normalization_context' => ['groups' => ['Actions:read']],
+                'normalization_context' => ['groups' => ['SensorData:read']],
                 'openapi_context' => [
                     'security' => [['bearerAuth' => []]],
                     'summary' => 'Retrieves the list of actions for a module',

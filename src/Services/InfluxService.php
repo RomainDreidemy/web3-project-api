@@ -4,6 +4,8 @@
 namespace App\Services;
 
 use App\Entity\Influx\Records;
+use App\Entity\SensorType;
+use App\Repository\SensorTypeRepository;
 use InfluxDB2\Client;
 
 class InfluxService
@@ -13,6 +15,7 @@ class InfluxService
     string $token,
     private string $bucket,
     string $org,
+    private SensorTypeRepository $sensorTypeRepository
   ) {
     $client = new Client([
       'url' => $url,
@@ -45,7 +48,7 @@ class InfluxService
         $records[] = (new Records())
             ->setNodeid($values['Node_ID'])
             ->setValue($values['_value'])
-            ->setSensorType($values['_measurement'])
+            ->setSensorType($this->sensorTypeRepository->findOneBy(['inflexId' => $values['_measurement']]))
         ;
     }
 

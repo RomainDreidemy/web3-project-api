@@ -58,10 +58,16 @@ class Familly
      */
     private $actionConditions;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Spec::class, mappedBy="family")
+     */
+    private $specs;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
         $this->actionConditions = new ArrayCollection();
+        $this->specs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,6 +129,36 @@ class Familly
             // set the owning side to null (unless already changed)
             if ($actionCondition->getFamily() === $this) {
                 $actionCondition->setFamily(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Spec[]
+     */
+    public function getSpecs(): Collection
+    {
+        return $this->specs;
+    }
+
+    public function addSpec(Spec $spec): self
+    {
+        if (!$this->specs->contains($spec)) {
+            $this->specs[] = $spec;
+            $spec->setFamily($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSpec(Spec $spec): self
+    {
+        if ($this->specs->removeElement($spec)) {
+            // set the owning side to null (unless already changed)
+            if ($spec->getFamily() === $this) {
+                $spec->setFamily(null);
             }
         }
 
