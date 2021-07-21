@@ -48,27 +48,20 @@ class Familly
     private string $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Sheet::class, mappedBy="familly", orphanRemoval=true)
-     */
-    #[Groups(['Familly:read'])]
-    private Collection $sheets;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Spec::class, mappedBy="familly", orphanRemoval=true)
-     */
-    private Collection $specs;
-
-    /**
      * @ORM\OneToMany(targetEntity=Module::class, mappedBy="familly")
      */
     #[Groups(['Familly:read'])]
     private Collection $modules;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ActionCondition::class, mappedBy="family")
+     */
+    private $actionConditions;
+
     public function __construct()
     {
-        $this->sheets = new ArrayCollection();
-        $this->specs = new ArrayCollection();
         $this->modules = new ArrayCollection();
+        $this->actionConditions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,42 +82,6 @@ class Familly
     }
 
     /**
-     * @return Collection|Sheet[]
-     */
-    public function getSheets(): Collection
-    {
-        return $this->sheets;
-    }
-
-    public function addSheet(Sheet $sheet): self
-    {
-        if (!$this->sheets->contains($sheet)) {
-            $this->sheets[] = $sheet;
-            $sheet->setFamilly($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Spec[]
-     */
-    public function getSpecs(): Collection
-    {
-        return $this->specs;
-    }
-
-    public function addSpec(Spec $spec): self
-    {
-        if (!$this->specs->contains($spec)) {
-            $this->specs[] = $spec;
-            $spec->setFamilly($this);
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Module[]
      */
     public function getModules(): Collection
@@ -137,6 +94,36 @@ class Familly
         if (!$this->modules->contains($module)) {
             $this->modules[] = $module;
             $module->setFamilly($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ActionCondition[]
+     */
+    public function getActionConditions(): Collection
+    {
+        return $this->actionConditions;
+    }
+
+    public function addActionCondition(ActionCondition $actionCondition): self
+    {
+        if (!$this->actionConditions->contains($actionCondition)) {
+            $this->actionConditions[] = $actionCondition;
+            $actionCondition->setFamily($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActionCondition(ActionCondition $actionCondition): self
+    {
+        if ($this->actionConditions->removeElement($actionCondition)) {
+            // set the owning side to null (unless already changed)
+            if ($actionCondition->getFamily() === $this) {
+                $actionCondition->setFamily(null);
+            }
         }
 
         return $this;
