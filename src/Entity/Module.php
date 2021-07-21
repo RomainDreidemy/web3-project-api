@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Controller\Module\ModuleImageController;
+use App\Controller\ModuleSensorController;
 use App\Repository\ModuleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -22,19 +23,24 @@ use Symfony\Component\Validator\Constraints\NotNull;
             'openapi_context' => ['security' => [['bearerAuth' => []]]]
         ]
     ],
-        itemOperations: ['GET' => [
-        'normalization_context' => ['groups' => ['Module:read']],
-        'openapi_context' => ['security' => [['bearerAuth' => []]]]
-    ],
-        'add_images' => [
-            'normalization_context' => ['groups' => ['Modules:read']],
-            'openapi_context' => ['security' => [['bearerAuth' => []]]],
-            'method' => 'POST',
-            'controller' => ModuleImageController::class,
-            'path' => '/modules/{id}/images',
-            'read' => false,
-            'write' => false
-        ]
+        itemOperations: [
+            'GET' => [
+                'normalization_context' => ['groups' => ['Module:read']],
+                'openapi_context' => ['security' => [['bearerAuth' => []]]]
+            ],
+            'sensors_informations' => [
+                'normalization_context' => ['groups' => ['SensorData:read']],
+                'openapi_context' => [
+                    'security' => [['bearerAuth' => []]],
+                    'summary' => 'Retrieves the list of actions for a module',
+                    'description' => 'Retrieves the list of actions for a module'
+                ],
+                'method' => 'GET',
+                'controller' => ModuleSensorController::class,
+                'path' => '/modules/{id}/sensors',
+                'read' => false,
+                'write' => false
+            ]
     ],
         paginationEnabled: false,
     )

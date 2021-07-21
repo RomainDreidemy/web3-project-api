@@ -4,13 +4,15 @@
 namespace App\Entity\Influx;
 
 
+use App\Entity\SensorType;
+
 class Records
 {
     private $nodeid;
 
     private int $value;
 
-    private string $sensorType;
+    private SensorType $sensorType;
 
     /**
      * @return mixed
@@ -51,15 +53,15 @@ class Records
     /**
      * @return string
      */
-    public function getSensorType(): string
+    public function getSensorType(): SensorType
     {
         return $this->sensorType;
     }
 
     /**
-     * @param string $sensorType
+     * @param ?SensorType $sensorType
      */
-    public function setSensorType(string $sensorType): self
+    public function setSensorType(?SensorType $sensorType): self
     {
         $this->sensorType = $sensorType;
 

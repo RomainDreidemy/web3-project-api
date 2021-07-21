@@ -4,52 +4,95 @@
 namespace App\Services;
 
 
-use _HumbugBoxda2413717501\Nette\Utils\Json;
+use _HumbugBoxda2413717501\Nette\Neon\Exception;
 use App\Entity\Module;
 use App\Entity\Sensor;
+use App\Entity\SensorData;
+use App\Repository\ActionConditionRepository;
 use App\Repository\ModuleRepository;
+use App\Repository\SensorRepository;
 use App\Repository\SpecRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ModuleService
 {
-    public function __construct(private ModuleRepository $moduleRepository, private SpecRepository $specRepository){}
+    public function __construct(
+        private ModuleRepository $moduleRepository,
+        private SensorRepository $sensorRepository,
+        private ActionConditionRepository $actionConditionRepository,
+        private SpecRepository $specRepository,
+        private InfluxService $influxService,
+    ){}
 
-    public function getInformations(int $id): JsonResponse
+    public function getActions(int $id): array
     {
+
         try {
             /** @var Module|null $module */
             $module = $this->moduleRepository->find($id);
             $family = $module->getFamilly();
 
-            if(is_null($module)){
-                return new JsonResponse(['message' => 'Le module n\'existe pas.'], 404);
+
+            if (is_null($module)) {
+//                return new JsonResponse(['message' => 'Le module n\'existe pas.'], 404);
+                dd('pas de module');
             }
 
-            /** @var Sensor $sensor */
-            foreach ($module->getSensors() as $sensor) {
-                $spec = $this->specRepository->findOneBySensorTypeAndFamily($sensor->getType()->getId(), $family->getId());
+            $datas = $this->influxService->getLastMeasurementsByNodeId($module->getInfluxId());
+            $returnActions = [];
 
-                dd($spec);
+            foreach ($datas as $data){
+                $actionConditions = $this->actionConditionRepository->findBySensorTypeAndFamily($data->getSensorType()->getId(), $family->getId());
+                $sensor = $this->sensorRepository->findOneBy(['module' => $module, 'type' => $data->getSensorType()]);
+                $spec = $this->specRepository->findOneBy(['family' => $family, 'sensorType' => $data->getSensorType()]);
+                foreach ($actionConditions as $condition) {
 
-                //TODO: récupérer les valeurs
-                $fake_value = 12;
+                    $hasError = false;
+                    switch ($condition->getOperator()) {
+                        case '<':
+                            if ($data->getValue() < $condition->getValue()) {
+                                $hasError = true;
+                            }
+                            break;
+                        case '>':
+                            if ($data->getValue() > $condition->getValue()) {
+                                $hasError = true;
+                            }
+                            break;
+                        case '=':
+                            if ($data->getValue() === $condition->getValue()) {
+                                $hasError = true;
+                            }
+                            break;
+                    }
 
-                //TODO: Récupérer les fiches au besoin
-                if ($fake_value < $spec->getMin()) {
-                    // Add the sheet
+                    $sensorData = (new SensorData())
+                        ->setSensorType($sensor->getType())
+                        ->setModule($module)
+                        ->setMin($spec->getMin())
+                        ->setMax($spec->getMax())
+                        ->setCurrentValue($data->getValue())
+                        ->setStatus()
+                    ;
+
+                    if ($hasError) {
+                        foreach ($condition->getActions() as $action){
+                            $sensorData
+                                ->addAction($action)
+                            ;
+                        }
+                    }
+
+                    $returnActions[] = $sensorData;
                 }
 
-                if ($fake_value > $spec->getMax()) {
-                    // Add the sheet
-                }
             }
-        } catch (\Exception $e){
-            dd($e);
-            return new JsonResponse(['error' => $e], 500);
+
+            return $returnActions;
+        } catch (\Exception $e) {
+            throw new Exception($e);
         }
 
 
-        return new JsonResponse($module);
     }
 }

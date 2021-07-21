@@ -35,6 +35,11 @@ class Sensor
      */
     private string $id_influx;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $last_value;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,6 +77,18 @@ class Sensor
     public function setIdInflux(string $id_influx): self
     {
         $this->id_influx = $id_influx;
+
+        return $this;
+    }
+
+    public function getLastValue(): ?int
+    {
+        return $this->last_value;
+    }
+
+    public function setLastValue(?int $last_value): self
+    {
+        $this->last_value = $last_value;
 
         return $this;
     }
