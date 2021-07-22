@@ -1,13 +1,15 @@
-<nav class="navbar navbar-light bg-light">
+{% if is_granted("ROLE_USER") %}
+    <nav class="navbar navbar-light bg-light">
 
-    {% set userFocus = app.request.get('userFocus') %}
+        {% set userFocus = app.request.get('userFocus') %}
 
 
-    <a class="navbar-brand" href="{{ path('dashboard_index', {userFocus: userFocus} ) }}">
-        <button type="button" class="btn btn-primary">Home</button>
-    </a>
+        <a class="navbar-brand" href="{{ path('dashboard_index', {userFocus: userFocus} ) }}">
+            <button type="button" class="btn btn-primary">Home</button>
+        </a>
 
-{#    <a class="navbar-brand" href="{{ path('app_logout') }}">#}
-{#        <button type="button" class="btn btn-outline-danger">Logout</button>#}
-{#    </a>#}
-</nav>
+        <a class="navbar-brand" href="{{ path('app_logout') }}">
+            <button type="button" class="btn btn-outline-danger">Logout</button>
+        </a>
+    </nav>
+{% endif %}
