@@ -4,6 +4,17 @@
 
 {% block body %}
 <section class="example-wrapper">
+    <label for="user"></label>
+    <select class="form-control" id="user">
+        {% for user in users %}
+            <option value="" >Select a school</option>
+            <option value="{{user.id}}" >{{user.email}}</option>
+        {% endfor %}
+    </select>
+
+    <hr>
+
+
     <a href="{{ path('user_index') }}">Users</a>
     <a href="{{ path('familly_index') }}">Families</a>
     <a href="{{ path('sensor_index') }}">Sensors</a>
