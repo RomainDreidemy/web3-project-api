@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\Module\ModuleController;
 use App\Controller\Module\ModuleImageController;
+use App\Controller\Module\ModulesController;
 use App\Controller\ModuleSensorController;
 use App\Repository\ModuleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -18,29 +20,47 @@ use Symfony\Component\Validator\Constraints\NotNull;
 #[
     ApiResource(
         collectionOperations: [
-        'GET' => [
-            'normalization_context' => ['groups' => ['Modules:read']],
-            'openapi_context' => ['security' => [['bearerAuth' => []]]]
-        ]
-    ],
-        itemOperations: [
             'GET' => [
-                'normalization_context' => ['groups' => ['Module:read']],
-                'openapi_context' => ['security' => [['bearerAuth' => []]]]
-            ],
-            'sensors_informations' => [
-                'normalization_context' => ['groups' => ['SensorData:read']],
+                'normalization_context' => ['groups' => ['ModuleApi:read']],
                 'openapi_context' => [
                     'security' => [['bearerAuth' => []]],
                     'summary' => 'Retrieves the list of actions for a module',
                     'description' => 'Retrieves the list of actions for a module'
                 ],
                 'method' => 'GET',
-                'controller' => ModuleSensorController::class,
-                'path' => '/modules/{id}/sensors',
+                'controller' => ModulesController::class,
+                'path' => '/modules',
                 'read' => false,
                 'write' => false
             ]
+        ],
+        itemOperations: [
+            'GET' => [
+                'normalization_context' => ['groups' => ['ModuleApi:read']],
+                'openapi_context' => [
+                    'security' => [['bearerAuth' => []]],
+                    'summary' => 'Retrieves the list of actions for a module',
+                    'description' => 'Retrieves the list of actions for a module'
+                ],
+                'method' => 'GET',
+                'controller' => ModuleController::class,
+                'path' => '/modules/{id}',
+                'read' => false,
+                'write' => false
+            ],
+//            'sensors_informations' => [
+//                'normalization_context' => ['groups' => ['SensorData:read']],
+//                'openapi_context' => [
+//                    'security' => [['bearerAuth' => []]],
+//                    'summary' => 'Retrieves the list of actions for a module',
+//                    'description' => 'Retrieves the list of actions for a module'
+//                ],
+//                'method' => 'GET',
+//                'controller' => ModuleSensorController::class,
+//                'path' => '/modules/{id}/sensors',
+//                'read' => false,
+//                'write' => false
+//            ]
     ],
         paginationEnabled: false,
     )
@@ -52,13 +72,13 @@ class Module
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Familly:read', 'Modules:read', 'Module:read'])]
+    #[Groups(['Familly:read', 'Modules:read', 'Module:read', 'ModuleApi:read'])]
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[Groups(['Modules:read', 'Module:read'])]
+    #[Groups(['Modules:read', 'Module:read', 'ModuleApi:read'])]
     private ?string $name;
 
     /**
@@ -78,6 +98,7 @@ class Module
      * @ORM\ManyToOne(targetEntity=Familly::class, inversedBy="modules")
      * @ORM\JoinColumn(nullable=false)
      */
+    #[Groups(['ModuleApi:read'])]
     private ?Familly $familly;
 
     /**
@@ -92,6 +113,9 @@ class Module
     #[Groups(['Module:read'])]
     private Collection $images;
 
+    #[Groups(['Module:read'])]
+    private Collection $sensorsActions;
+
     /**
      * @ORM\Column(type="integer")
      */
@@ -99,6 +123,7 @@ class Module
 
     public function __construct()
     {
+        $this->sensorsActions = new ArrayCollection();
         $this->sensors = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->images = new ArrayCollection();
@@ -201,6 +226,21 @@ class Module
     public function setInfluxId(int $influxId): self
     {
         $this->influxId = $influxId;
+
+        return $this;
+    }
+
+    /**
+     * @return Action[]
+     */
+    public function getSensorsActions(): Collection
+    {
+        return $this->sensorsActions;
+    }
+
+    public function addSensorsActions(SensorData $sensorsActions): self
+    {
+        $this->sensorsActions[] = $sensorsActions;
 
         return $this;
     }

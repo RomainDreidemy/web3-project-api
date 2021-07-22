@@ -12,25 +12,25 @@ class SensorData
 {
     private Module $module;
 
-    #[Groups(['SensorData:read'])]
+    #[Groups(['SensorData:read', 'ModuleApi:read'])]
     private SensorType $sensorType;
 
-    #[Groups(['SensorData:read'])]
+    #[Groups(['SensorData:read', 'ModuleApi:read'])]
     private int $min;
 
-    #[Groups(['SensorData:read'])]
+    #[Groups(['SensorData:read', 'ModuleApi:read'])]
     private int $max;
 
-    #[Groups(['SensorData:read'])]
+    #[Groups(['SensorData:read', 'ModuleApi:read'])]
     private int $currentValue;
 
     /**
      * @var Action[]
      */
-    #[Groups(['SensorData:read'])]
+    #[Groups(['SensorData:read', 'ModuleApi:read'])]
     private Collection $actions;
 
-    #[Groups(['SensorData:read'])]
+    #[Groups(['SensorData:read', 'ModuleApi:read'])]
     private bool $status;
 
     /**
