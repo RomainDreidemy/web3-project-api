@@ -27,11 +27,11 @@ class InfluxService
     $this->queryApi = $client->createQueryApi();
   }
 
-    /**
-     * @param $nodeId
-     * @return Records[]
-     */
-    public function getLastMeasurementsByNodeId($nodeId): array
+  /**
+   * @param $nodeId
+   * @return Records[]
+   */
+  public function getLastMeasurementsByNodeId($nodeId): array
   {
     $query = "from(bucket: \"{$this->bucket}\")
               |> range(start: -1h)
@@ -40,16 +40,22 @@ class InfluxService
 
     $results = $this->queryApi->query($query);
 
-    $records = [];
+    return $this->formatInfluxResults($results);
+  }
 
-    foreach ($results as $result){
-        $values = $result->records[0]->values;
+  /**
+   * @param $results
+   * @return Records[]
+   */
+  private function formatInfluxResults(array $results): array
+  {
+    foreach ($results[0]->records as $record) {
+      $values = $record->values;
 
-        $records[] = (new Records())
-            ->setNodeid($values['Node_ID'])
-            ->setValue($values['_value'])
-            ->setSensorType($this->sensorTypeRepository->findOneBy(['inflexId' => $values['_measurement']]))
-        ;
+      $records[] = (new Records())
+        ->setNodeid($values['Node_ID'])
+        ->setValue($values['_value'])
+        ->setSensorType($this->sensorTypeRepository->findOneBy(['inflexId' => $values['_measurement']]));
     }
 
     return $records;
