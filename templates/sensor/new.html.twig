@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Sensor{% endblock %}
+
+{% set userFocus = app.request.get('userFocus') %}
+
+{% block body %}
+    <h1>Create new Sensor</h1>
+
+    {{ include('sensor/_form.html.twig') }}
+
+    <a href="{{ path('sensor_index', { userFocus: userFocus}) }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+    {% set userFocus = app.request.get('userFocus') %}
+
+    <ul class="list-group mx-auto w-25 p-3">
+        <li class="list-group-item"><a href="{{ path('user_index') }}" class="btn-block">
+                <button type="button" class="btn btn-primary btn-block">Users</button>
+            </a>
+        </li>
+        <li class="list-group-item"><a href="{{ path('familly_index') }}">
+                <button type="button" class="btn btn-primary btn-block">Families</button>
+            </a>
+        </li>
+    </ul>
+
+    <div class="card">
+        <div class="card-header">
+            <label for="user">School selection : </label>
+        </div>
+        <div class="card-body">
+            <form method="get">
+                <select class="form-control" id="user" name="userFocus">
+                    <option value="">Select a school</option>
+                    {% for user in users %}
+                        {% set selected = '' %}
+                        {% if user.id == userFocus %}
+                            {% set selected = 'selected' %}
+                        {% endif %}
+
+                        <option value="{{ user.id }}" {{ selected }}>{{ user.email }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Validate" class="btn btn-primary" style="margin-top: 15px">
+            </form>
+        </div>
+    </div>
+
+    {% if userFocus != '' %}
+
+        <ul class="list-group mx-auto w-25 p-3">
+            <li class="list-group-item"><a href="{{ path('sensor_index', {userFocus: userFocus}) }}">
+                    <button type="button" class="btn btn-primary btn-block">Sensors</button>
+                </a>
+            </li>
+        </ul>
+    {% endif %}
+
+{% endblock %}

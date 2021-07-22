@@ -47,4 +47,20 @@ class SensorRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @param $userFocusId
+     * @return array
+     */
+    public function findSensorsByUser($userFocusId): array
+    {
+        return $this->createQueryBuilder('sensor')
+            ->innerJoin('sensor.module', 'module')
+            ->innerJoin('module.user', 'user')
+            ->where('user.id = :userFocusId')
+            ->setParameter('userFocusId', $userFocusId)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sensor index{% endblock %}
+
+{% block body %}
+
+    {% set userFocus = app.request.get('userFocus') %}
+
+
+    <h1>Sensor index</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id_influx</th>
+                <th>module</th>
+                <th>type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sensor in sensors %}
+            <tr>
+                <td>{{ sensor.id }}</td>
+                <td>{{ sensor.idInflux }}</td>
+                <td>{{ sensor.module.name }}</td>
+                <td>{{ sensor.type.name }}</td>
+                <td>
+                    <a href="{{ path('sensor_show', {'id': sensor.id, userFocus: userFocus}) }}">show</a>
+                    <a href="{{ path('sensor_edit', {'id': sensor.id, userFocus: userFocus}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('sensor_new', { userFocus: userFocus}) }}">Create new</a>
+{% endblock %}
