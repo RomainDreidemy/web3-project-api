@@ -37,14 +37,14 @@ class Familly
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Famillies:read', 'Familly:read'])]
+    #[Groups(['Famillies:read', 'Familly:read', 'ModuleApi:read'])]
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
     #[NotBlank]
-    #[Groups(['Famillies:read', 'Familly:read'])]
+    #[Groups(['Famillies:read', 'Familly:read', 'ModuleApi:read'])]
     private string $name;
 
     /**
