@@ -44,6 +44,23 @@ class InfluxService
   }
 
   /**
+   *  @param $nodeId
+   *  @param $measurement
+   *  @param $timeRange 
+   *  @return Records[]
+   */
+  public function getMeasurementForTimeRange($nodeId, $measurement, $timeRange): array
+  {
+    $query = "from(bucket: \"{$this->bucket}\")
+              |> range(start: {$timeRange['start']}, stop: {$timeRange['stop']})
+              |> filter(fn: (r) => r[\"Node_ID\"] == \"{$nodeId}\")
+              |> filter(fn: (r) => r[\"_measurement\"] == \"{$measurement}\")";
+
+    $results = $this->queryApi->query($query);
+    return $this->formatInfluxResults($results);
+  }
+
+  /**
    * @param $results
    * @return Records[]
    */
