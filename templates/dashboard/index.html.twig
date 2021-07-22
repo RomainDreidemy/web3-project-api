@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
 {% block body %}
 
-    {% set userFocus = app.request.get('user') %}
+    {% set userFocus = app.request.get('userFocus') %}
 
     <ul class="list-group mx-auto w-25 p-3">
         <li class="list-group-item"><a href="{{ path('user_index') }}" class="btn-block">
@@ -23,7 +23,7 @@
         </div>
         <div class="card-body">
             <form method="get">
-                <select class="form-control" id="user" name="user">
+                <select class="form-control" id="user" name="userFocus">
                     <option value="">Select a school</option>
                     {% for user in users %}
                         {% set selected = '' %}
@@ -39,20 +39,14 @@
         </div>
     </div>
 
-
-
-    <br>
-
-
     {% if userFocus != '' %}
 
         <ul class="list-group mx-auto w-25 p-3">
-            <li class="list-group-item"><a href="{{ path('sensor_index', {user: userFocus}) }}">
+            <li class="list-group-item"><a href="{{ path('sensor_index', {userFocus: userFocus}) }}">
                     <button type="button" class="btn btn-primary btn-block">Sensors</button>
                 </a>
             </li>
         </ul>
     {% endif %}
 
-    </section>
 {% endblock %}

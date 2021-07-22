@@ -14,10 +14,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class SensorController extends AbstractController
 {
     #[Route('/', name: 'sensor_index', methods: ['GET'])]
-    public function index(SensorRepository $sensorRepository): Response
+    public function index(
+        SensorRepository $sensorRepository,
+        Request $request
+    ): Response
     {
+        (string)$userFocus = $request->query->get('userFocus');
+
         return $this->render('sensor/index.html.twig', [
-            'sensors' => $sensorRepository->findAll(),
+            'sensors' => $userFocus ?$sensorRepository->findSensorsByUser($userFocus) : $sensorRepository->findAll(),
         ]);
     }
 
