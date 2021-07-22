@@ -55,7 +55,8 @@ class InfluxService
       $records[] = (new Records())
         ->setNodeid($values['Node_ID'])
         ->setValue($values['_value'])
-        ->setSensorType($this->sensorTypeRepository->findOneBy(['inflexId' => $values['_measurement']]));
+        ->setSensorType($this->sensorTypeRepository->findOneBy(['inflexId' => $values['_measurement']]))
+        ->setTimestamp($values['_time']);
     }
 
     return $records;

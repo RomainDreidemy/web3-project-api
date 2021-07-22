@@ -14,6 +14,8 @@ class Records
 
     private SensorType $sensorType;
 
+    private int $timestamp;
+
     /**
      * @return mixed
      */
@@ -66,6 +68,22 @@ class Records
         $this->sensorType = $sensorType;
 
         return $this;
+    }
 
+    /**
+     * @return string
+     */
+    public function getTimestamp(): int
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * @param string $timestamp
+     */
+    public function setTimestamp(string $timestamp): self
+    {
+        $this->timestamp = strtotime($timestamp);
+        return $this;
     }
 }
