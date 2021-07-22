@@ -2,25 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\Action;
+use App\Entity\Module;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ActionType extends AbstractType
+class ModuleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text')
-//            ->add('actionCondition')
+            ->add('name')
+            ->add('influxId')
+//            ->add('user')
+//            ->add('familly')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Action::class,
+            'data_class' => Module::class,
         ]);
     }
 }

@@ -7,12 +7,25 @@
     {% set userFocus = app.request.get('userFocus') %}
 
     <ul class="list-group mx-auto w-25 p-3">
-        <li class="list-group-item"><a href="{{ path('user_index') }}" class="btn-block">
+        <li class="list-group-item">
+            <a href="{{ path('user_index') }}" class="btn-block">
                 <button type="button" class="btn btn-primary btn-block">Users</button>
             </a>
         </li>
-        <li class="list-group-item"><a href="{{ path('familly_index') }}">
+        <li class="list-group-item">
+            <a href="{{ path('familly_index') }}">
                 <button type="button" class="btn btn-primary btn-block">Families</button>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="{{ path('action_index') }}">
+                <button type="button" class="btn btn-primary btn-block">Actions</button>
+            </a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="{{ path('sensor_type_index') }}">
+                <button type="button" class="btn btn-primary btn-block">Sensors Type</button>
             </a>
         </li>
     </ul>
@@ -42,8 +55,14 @@
     {% if userFocus != '' %}
 
         <ul class="list-group mx-auto w-25 p-3">
-            <li class="list-group-item"><a href="{{ path('sensor_index', {userFocus: userFocus}) }}">
+            <li class="list-group-item">
+                <a href="{{ path('sensor_index', {userFocus: userFocus}) }}">
                     <button type="button" class="btn btn-primary btn-block">Sensors</button>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ path('module_index', {userFocus: userFocus}) }}">
+                    <button type="button" class="btn btn-primary btn-block">Modules</button>
                 </a>
             </li>
         </ul>

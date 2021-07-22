@@ -2,25 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Action;
+use App\Entity\SensorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ActionType extends AbstractType
+class SensorTypeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text')
-//            ->add('actionCondition')
+            ->add('name')
+            ->add('unit')
+            ->add('inflexId')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Action::class,
+            'data_class' => SensorType::class,
         ]);
     }
 }
