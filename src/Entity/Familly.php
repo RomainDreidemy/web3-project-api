@@ -63,11 +63,17 @@ class Familly
      */
     private $specs;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Vegetable::class, mappedBy="family")
+     */
+    private $vegetables;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
         $this->actionConditions = new ArrayCollection();
         $this->specs = new ArrayCollection();
+        $this->vegetables = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -159,6 +165,36 @@ class Familly
             // set the owning side to null (unless already changed)
             if ($spec->getFamily() === $this) {
                 $spec->setFamily(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Vegetable[]
+     */
+    public function getVegetables(): Collection
+    {
+        return $this->vegetables;
+    }
+
+    public function addVegetable(Vegetable $vegetable): self
+    {
+        if (!$this->vegetables->contains($vegetable)) {
+            $this->vegetables[] = $vegetable;
+            $vegetable->setFamily($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVegetable(Vegetable $vegetable): self
+    {
+        if ($this->vegetables->removeElement($vegetable)) {
+            // set the owning side to null (unless already changed)
+            if ($vegetable->getFamily() === $this) {
+                $vegetable->setFamily(null);
             }
         }
 
