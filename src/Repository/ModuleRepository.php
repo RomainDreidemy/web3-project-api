@@ -47,4 +47,19 @@ class ModuleRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @param $userFocusId
+     * @return array
+     */
+    public function findModulesByUser(string $userFocusId): array
+    {
+        return $this->createQueryBuilder('module')
+            ->innerJoin('module.user', 'user')
+            ->where('user.id = :userFocusId')
+            ->setParameter('userFocusId', $userFocusId)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
