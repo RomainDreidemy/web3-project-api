@@ -93,6 +93,21 @@ class Vegetable
      */
     private $recolte_end;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $cycle;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $exposition;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $yield;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -274,6 +289,42 @@ class Vegetable
     public function setRecolteEnd(?string $recolte_end): self
     {
         $this->recolte_end = $recolte_end;
+
+        return $this;
+    }
+
+    public function getCycle(): ?string
+    {
+        return $this->cycle;
+    }
+
+    public function setCycle(?string $cycle): self
+    {
+        $this->cycle = $cycle;
+
+        return $this;
+    }
+
+    public function getExposition(): ?string
+    {
+        return $this->exposition;
+    }
+
+    public function setExposition(?string $exposition): self
+    {
+        $this->exposition = $exposition;
+
+        return $this;
+    }
+
+    public function getYield(): ?string
+    {
+        return $this->yield;
+    }
+
+    public function setYield(?string $yield): self
+    {
+        $this->yield = $yield;
 
         return $this;
     }

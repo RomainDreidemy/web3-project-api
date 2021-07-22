@@ -33,6 +33,10 @@ class VegetableFixtures extends Fixture
                     ->setEntretienText($vegetable['Entretien'])
                     ->setRecolteText($vegetable['Recolte'])
 
+                    ->setCycle($vegetable['Cycle'])
+                    ->setExposition($vegetable['Exposition'])
+                    ->setYield($vegetable['Rendement'])
+
                     ->setCultureStart($vegetable['start_culture'])
                     ->setCultureEnd($vegetable['end_culture'])
                     ->setRecolteStart($vegetable['start_recolte'])
