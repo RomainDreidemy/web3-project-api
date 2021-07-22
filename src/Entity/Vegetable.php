@@ -2,12 +2,37 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\Module\ModuleController;
+use App\Controller\Module\ModulesController;
 use App\Repository\VegetableRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=VegetableRepository::class)
  */
+#[
+    ApiResource(
+        collectionOperations: [
+        'GET' => [
+            'normalization_context' => ['groups' => ['Vegetables:read']],
+            'openapi_context' => [
+                'security' => [['bearerAuth' => []]],
+            ],
+        ]
+    ],
+        itemOperations: [
+        'GET' => [
+            'normalization_context' => ['groups' => ['Vegetable:read']],
+            'openapi_context' => [
+                'security' => [['bearerAuth' => []]],
+            ],
+        ]
+    ],
+        paginationEnabled: false,
+    )
+]
 class Vegetable
 {
     /**
@@ -15,98 +40,117 @@ class Vegetable
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $name;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $water;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?int $water;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $fiber;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?int $fiber;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $glucose;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?int $glucose;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $protein;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?int $protein;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $lipid;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?int $lipid;
 
     /**
      * @ORM\ManyToOne(targetEntity=Familly::class, inversedBy="vegetables")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $family;
+    #[Groups(['Vegetable:read'])]
+    private ?Familly $family;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $introText;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $introText;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $cultureText;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $cultureText;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $entretienText;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $entretienText;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $recolteText;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $recolteText;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $culture_start;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $culture_start;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $culture_end;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $culture_end;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $recolte_start;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $recolte_start;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $recolte_end;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $recolte_end;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $cycle;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $cycle;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $exposition;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $exposition;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $yield;
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private ?string $yield;
 
     public function getId(): ?int
     {
