@@ -11,11 +11,7 @@
                 <button type="button" class="btn btn-primary btn-block">Users</button>
             </a>
         </li>
-        <li class="list-group-item"><a href="{{ path('sensor_index') }}">
-                <button type="button" class="btn btn-primary btn-block">Sensors</button>
-            </a>
-        </li>
-        <li class="list-group-item"><a href="{{ path('familly_index', {user: userFocus}) }}">
+        <li class="list-group-item"><a href="{{ path('familly_index') }}">
                 <button type="button" class="btn btn-primary btn-block">Families</button>
             </a>
         </li>
@@ -30,7 +26,12 @@
                 <select class="form-control" id="user" name="user">
                     <option value="">Select a school</option>
                     {% for user in users %}
-                        <option value="{{ user.id }}">{{ user.email }}</option>
+                        {% set selected = '' %}
+                        {% if user.id == userFocus %}
+                            {% set selected = 'selected' %}
+                        {% endif %}
+
+                        <option value="{{ user.id }}" {{ selected }}>{{ user.email }}</option>
                     {% endfor %}
                 </select>
                 <input type="submit" value="Validate" class="btn btn-primary" style="margin-top: 15px">
@@ -45,6 +46,12 @@
 
     {% if userFocus != '' %}
 
+        <ul class="list-group mx-auto w-25 p-3">
+            <li class="list-group-item"><a href="{{ path('sensor_index', {user: userFocus}) }}">
+                    <button type="button" class="btn btn-primary btn-block">Sensors</button>
+                </a>
+            </li>
+        </ul>
     {% endif %}
 
     </section>
