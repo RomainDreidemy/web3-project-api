@@ -200,4 +200,9 @@ class Familly
 
         return $this;
     }
+
+    public function __invoke(): array
+    {
+        return $this->name;
+    }
 }

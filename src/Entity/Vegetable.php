@@ -372,4 +372,9 @@ class Vegetable
 
         return $this;
     }
+
+//    public function __invoke(): array
+//    {
+//        return $this->getFamily()->getName();
+//    }
 }
