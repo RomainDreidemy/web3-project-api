@@ -13,7 +13,7 @@ class ActionType extends AbstractType
     {
         $builder
             ->add('text')
-            ->add('actionCondition')
+//            ->add('actionCondition')
         ;
     }
 
