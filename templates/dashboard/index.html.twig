@@ -3,19 +3,49 @@
 {% block title %}Hello DashboardController!{% endblock %}
 
 {% block body %}
-<section class="example-wrapper">
-    <a href="{{ path('user_index') }}">Users</a>
-    <a href="{{ path('familly_index') }}">Families</a>
-    <a href="{{ path('sensor_index') }}">Sensors</a>
+
+    {% set userFocus = app.request.get('user') %}
+
+    <ul class="list-group mx-auto w-25 p-3">
+        <li class="list-group-item"><a href="{{ path('user_index') }}" class="btn-block">
+                <button type="button" class="btn btn-primary btn-block">Users</button>
+            </a>
+        </li>
+        <li class="list-group-item"><a href="{{ path('sensor_index') }}">
+                <button type="button" class="btn btn-primary btn-block">Sensors</button>
+            </a>
+        </li>
+        <li class="list-group-item"><a href="{{ path('familly_index', {user: userFocus}) }}">
+                <button type="button" class="btn btn-primary btn-block">Families</button>
+            </a>
+        </li>
+    </ul>
+
+    <div class="card">
+        <div class="card-header">
+            <label for="user">School selection : </label>
+        </div>
+        <div class="card-body">
+            <form method="get">
+                <select class="form-control" id="user" name="user">
+                    <option value="">Select a school</option>
+                    {% for user in users %}
+                        <option value="{{ user.id }}">{{ user.email }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Validate" class="btn btn-primary" style="margin-top: 15px">
+            </form>
+        </div>
+    </div>
+
+
 
     <br>
 
-    <label for="user">School selection :</label>
-    <select class="form-control" id="user">
-        {% for user in users %}
-            <option value="" >Select a school</option>
-            <option value="{{user.id}}" >{{user.email}}</option>
-        {% endfor %}
-    </select>
-</section>
+
+    {% if userFocus != '' %}
+
+    {% endif %}
+
+    </section>
 {% endblock %}
