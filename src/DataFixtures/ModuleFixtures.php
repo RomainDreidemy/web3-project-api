@@ -24,6 +24,7 @@ class ModuleFixtures extends Fixture implements DependentFixtureInterface
                 ->setName($faker->randomElement([$faker->name, null]))
                 ->setFamilly($faker->randomElement($families))
                 ->setUser($faker->randomElement($users))
+                ->setInfluxId(12345678)
             ;
 
             $manager->persist($module);
