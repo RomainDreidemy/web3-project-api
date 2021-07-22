@@ -3,6 +3,10 @@
 {% block title %}Sensor index{% endblock %}
 
 {% block body %}
+
+    {% set userFocus = app.request.get('userFocus') %}
+
+
     <h1>Sensor index</h1>
     <table class="table">
         <thead>
@@ -22,8 +26,8 @@
                 <td>{{ sensor.module.name }}</td>
                 <td>{{ sensor.type.name }}</td>
                 <td>
-                    <a href="{{ path('sensor_show', {'id': sensor.id}) }}">show</a>
-                    <a href="{{ path('sensor_edit', {'id': sensor.id}) }}">edit</a>
+                    <a href="{{ path('sensor_show', {'id': sensor.id, userFocus: userFocus}) }}">show</a>
+                    <a href="{{ path('sensor_edit', {'id': sensor.id, userFocus: userFocus}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -34,5 +38,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('sensor_new') }}">Create new</a>
+    <a href="{{ path('sensor_new', { userFocus: userFocus}) }}">Create new</a>
 {% endblock %}

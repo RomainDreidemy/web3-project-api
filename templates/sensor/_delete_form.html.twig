@@ -1,4 +1,6 @@
-<form method="post" action="{{ path('sensor_delete', {'id': sensor.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+{% set userFocus = app.request.get('userFocus') %}
+
+<form method="post" action="{{ path('sensor_delete', {'id': sensor.id, userFocus: userFocus}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ sensor.id) }}">
     <button class="btn">Delete</button>
 </form>
