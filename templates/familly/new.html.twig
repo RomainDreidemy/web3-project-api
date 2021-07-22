@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Familly{% endblock %}
+
+{% block body %}
+    <h1>Create new Familly</h1>
+
+    {{ include('familly/_form.html.twig') }}
+
+    <a href="{{ path('familly_index') }}">back to list</a>
+{% endblock %}
