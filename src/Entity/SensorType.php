@@ -19,18 +19,19 @@ class SensorType
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Actions:read', 'SensorData:read'])]
+    #[Groups(['Actions:read', 'SensorData:read', 'ModuleApi:read'])]
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    #[Groups(['Actions:read', 'SensorData:read'])]
+    #[Groups(['Actions:read', 'SensorData:read', 'ModuleApi:read'])]
     private ?string $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['ModuleApi:read'])]
     private ?string $unit;
 
     /**
