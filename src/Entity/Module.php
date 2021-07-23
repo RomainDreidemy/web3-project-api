@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Controller\Module\ModuleController;
-use App\Controller\Module\ModuleImageController;
 use App\Controller\Module\ModulesController;
 use App\Controller\ModuleSensorController;
 use App\Repository\ModuleRepository;
@@ -47,7 +46,8 @@ use Symfony\Component\Validator\Constraints\NotNull;
                 'path' => '/modules/{id}',
                 'read' => false,
                 'write' => false
-            ],
+            ]
+
 //            'sensors_informations' => [
 //                'normalization_context' => ['groups' => ['SensorData:read']],
 //                'openapi_context' => [
@@ -61,6 +61,10 @@ use Symfony\Component\Validator\Constraints\NotNull;
 //                'read' => false,
 //                'write' => false
 //            ]
+
+
+
+
     ],
         paginationEnabled: false,
     )
@@ -107,12 +111,6 @@ class Module
     #[Groups(['Module:read'])]
     private Collection $comments;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="module", orphanRemoval=true)
-     */
-    #[Groups(['Module:read'])]
-    private Collection $images;
-
     #[Groups(['Module:read'])]
     private Collection $sensorsActions;
 
@@ -126,7 +124,6 @@ class Module
         $this->sensorsActions = new ArrayCollection();
         $this->sensors = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int

@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\Module\ModuleCommentController;
 use App\Enums\CommentKeys;
 use App\Repository\CommentRepository;
@@ -21,6 +23,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
         'POST' => [
             'normalization_context' => ['groups' => ['Comment:read']],
             'denormalization_context' => ['groups' => ['Comments:write']],
+            'openapi_context' => ['security' => [['bearerAuth' => []]]]
+        ],
+        'GET' => [
+            'normalization_context' => ['groups' => ['Comment:read']],
             'openapi_context' => ['security' => [['bearerAuth' => []]]]
         ]
     ],
@@ -132,7 +138,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'write' => false
             ],
         ]
-    )
+    ),
+    ApiFilter(SearchFilter::class, properties: ['module.id'])
 ]
 class Comment
 {
