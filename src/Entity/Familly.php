@@ -201,7 +201,7 @@ class Familly
         return $this;
     }
 
-    public function __invoke(): array
+    public function __toString(): string
     {
         return $this->name;
     }
