@@ -11,11 +11,11 @@ class FamilyFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $faker = Factory::create();
+        $families = ['Légumes racines', 'Légumes fruits', 'Légumes feuilles', 'Légumes fleurs'];
 
-        for ($i = 0; $i < 4; $i++) {
+        foreach ($families as $family) {
             $family = (new Familly())
-                ->setName($faker->name)
+                ->setName($family)
             ;
 
             $manager->persist($family);

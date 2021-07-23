@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Module{% endblock %}
+
+{% set userFocus = app.request.get('userFocus') %}
+
+{% block body %}
+    <h1>Create new Module</h1>
+
+    {{ include('module/_form.html.twig') }}
+
+    <a href="{{ path('module_index', {userFocus: userFocus}) }}">back to list</a>
+{% endblock %}

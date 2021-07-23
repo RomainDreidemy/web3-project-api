@@ -1,0 +1,6 @@
+{% set userFocus = app.request.get('userFocus') %}
+
+<form method="post" action="{{ path('module_delete', {'id': module.id, userFocus: userFocus}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ module.id) }}">
+    <button class="btn">Delete</button>
+</form>
