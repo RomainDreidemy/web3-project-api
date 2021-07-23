@@ -27,11 +27,11 @@ class InfluxService
     $this->queryApi = $client->createQueryApi();
   }
 
-    /**
-     * @param $nodeId
-     * @return Records[]
-     */
-    public function getLastMeasurementsByNodeId($nodeId): array
+  /**
+   * @param $nodeId
+   * @return Records[]
+   */
+  public function getLastMeasurementsByNodeId($nodeId): array
   {
     $query = "from(bucket: \"{$this->bucket}\")
               |> range(start: -1h)
@@ -40,16 +40,40 @@ class InfluxService
 
     $results = $this->queryApi->query($query);
 
-    $records = [];
+    return $this->formatInfluxResults($results);
+  }
 
-    foreach ($results as $result){
-        $values = $result->records[0]->values;
+  /**
+   *  @param $nodeId
+   *  @param $measurement
+   *  @param $timeRange 
+   *  @return Records[]
+   */
+  public function getMeasurementForTimeRange($nodeId, $measurement, array $timeRange): array
+  {
+    $query = "from(bucket: \"{$this->bucket}\")
+              |> range(start: {$timeRange['start']}, stop: {$timeRange['stop']})
+              |> filter(fn: (r) => r[\"Node_ID\"] == \"{$nodeId}\")
+              |> filter(fn: (r) => r[\"_measurement\"] == \"{$measurement}\")";
 
-        $records[] = (new Records())
-            ->setNodeid($values['Node_ID'])
-            ->setValue($values['_value'])
-            ->setSensorType($this->sensorTypeRepository->findOneBy(['inflexId' => $values['_measurement']]))
-        ;
+    $results = $this->queryApi->query($query);
+    return $this->formatInfluxResults($results);
+  }
+
+  /**
+   * @param $results
+   * @return Records[]
+   */
+  private function formatInfluxResults(array $results): array
+  {
+    foreach ($results[0]->records as $record) {
+      $values = $record->values;
+
+      $records[] = (new Records())
+        ->setNodeid($values['Node_ID'])
+        ->setValue($values['_value'])
+        ->setSensorType($this->sensorTypeRepository->findOneBy(['inflexId' => $values['_measurement']]))
+        ->setTimestamp($values['_time']);
     }
 
     return $records;

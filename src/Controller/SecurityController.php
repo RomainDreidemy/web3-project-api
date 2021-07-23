@@ -18,6 +18,14 @@ class SecurityController extends AbstractController
     #[Route('/test', name: 'test', methods: ['GET'])]
     public function test(InfluxService $service): Response
     {
-        dd($service->getLastMeasurementsByNodeId('12345678'));
+        $start = new \DateTime('-12 hours');
+        $stop = new \DateTime();
+
+        $timeRange = [
+            'start' => $start->format('U'),
+            'stop' => $stop->format('U')
+        ];
+
+        dd($service->getMeasurementForTimeRange('12345678', 'Air temperature', $timeRange));
     }
 }
