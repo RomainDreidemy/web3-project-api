@@ -67,13 +67,15 @@ class InfluxService
   private function formatInfluxResults(array $results): array
   {
     foreach ($results as $result) {
-      $values = $result->records[0]->values;
+      foreach ($result->records as $record) {
+        $values = $record->values;
 
-      $records[] = (new Records())
-        ->setNodeid($values['Node_ID'])
-        ->setValue($values['_value'])
-        ->setSensorType($this->sensorTypeRepository->findOneBy(['inflexId' => $values['_measurement']]))
-        ->setTimestamp($values['_time']);
+        $records[] = (new Records())
+          ->setNodeid($values['Node_ID'])
+          ->setValue($values['_value'])
+          ->setSensorType($this->sensorTypeRepository->findOneBy(['inflexId' => $values['_measurement']]))
+          ->setTimestamp($values['_time']);
+      }
     }
 
     return $records;
