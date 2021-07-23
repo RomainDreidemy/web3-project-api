@@ -66,8 +66,8 @@ class InfluxService
    */
   private function formatInfluxResults(array $results): array
   {
-    foreach ($results[0]->records as $record) {
-      $values = $record->values;
+    foreach ($results as $result) {
+      $values = $result->records[0]->values;
 
       $records[] = (new Records())
         ->setNodeid($values['Node_ID'])

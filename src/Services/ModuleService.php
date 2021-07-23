@@ -42,6 +42,7 @@ class ModuleService
             }
 
             $datas = $this->influxService->getLastMeasurementsByNodeId($module->getInfluxId());
+
             $returnActions = [];
 
             foreach ($datas as $data){
