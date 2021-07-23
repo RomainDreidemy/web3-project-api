@@ -49,7 +49,7 @@ class InfluxService
    *  @param $timeRange 
    *  @return Records[]
    */
-  public function getMeasurementForTimeRange($nodeId, $measurement, $timeRange): array
+  public function getMeasurementForTimeRange($nodeId, $measurement, array $timeRange): array
   {
     $query = "from(bucket: \"{$this->bucket}\")
               |> range(start: {$timeRange['start']}, stop: {$timeRange['stop']})
