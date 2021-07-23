@@ -52,31 +52,31 @@ class Vegetable
     /**
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?int $water;
 
     /**
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?int $fiber;
 
     /**
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?int $glucose;
 
     /**
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?int $protein;
 
     /**
      * @ORM\Column(type="integer")
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?int $lipid;
 
     /**
@@ -89,67 +89,67 @@ class Vegetable
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?string $introText;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?string $cultureText;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?string $entretienText;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?string $recolteText;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?string $culture_start;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?string $culture_end;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?string $recolte_start;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?string $recolte_end;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?string $cycle;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?string $exposition;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    #[Groups(['Vegetable:read'])]
     private ?string $yield;
 
     public function getId(): ?int

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vegetable index{% endblock %}
+
+{% block body %}
+    <h1>Vegetable index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Water</th>
+                <th>Fiber</th>
+                <th>Glucose</th>
+                <th>Protein</th>
+                <th>Lipid</th>
+                <th>IntroText</th>
+                <th>CultureText</th>
+                <th>EntretienText</th>
+                <th>RecolteText</th>
+                <th>Culture_start</th>
+                <th>Culture_end</th>
+                <th>Recolte_start</th>
+                <th>Recolte_end</th>
+                <th>Cycle</th>
+                <th>Exposition</th>
+                <th>Yield</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vegetable in vegetables %}
+            <tr>
+                <td>{{ vegetable.id }}</td>
+                <td>{{ vegetable.name }}</td>
+                <td>{{ vegetable.water }}</td>
+                <td>{{ vegetable.fiber }}</td>
+                <td>{{ vegetable.glucose }}</td>
+                <td>{{ vegetable.protein }}</td>
+                <td>{{ vegetable.lipid }}</td>
+                <td>{{ vegetable.introText }}</td>
+                <td>{{ vegetable.cultureText }}</td>
+                <td>{{ vegetable.entretienText }}</td>
+                <td>{{ vegetable.recolteText }}</td>
+                <td>{{ vegetable.cultureStart }}</td>
+                <td>{{ vegetable.cultureEnd }}</td>
+                <td>{{ vegetable.recolteStart }}</td>
+                <td>{{ vegetable.recolteEnd }}</td>
+                <td>{{ vegetable.cycle }}</td>
+                <td>{{ vegetable.exposition }}</td>
+                <td>{{ vegetable.yield }}</td>
+                <td>
+                    <a href="{{ path('vegetable_show', {'id': vegetable.id}) }}">show</a>
+                    <a href="{{ path('vegetable_edit', {'id': vegetable.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="19">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('vegetable_new') }}">Create new</a>
+{% endblock %}

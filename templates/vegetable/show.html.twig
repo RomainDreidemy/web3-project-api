@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vegetable{% endblock %}
+
+{% block body %}
+    <h1>Vegetable</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vegetable.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ vegetable.name }}</td>
+            </tr>
+            <tr>
+                <th>Water</th>
+                <td>{{ vegetable.water }}</td>
+            </tr>
+            <tr>
+                <th>Fiber</th>
+                <td>{{ vegetable.fiber }}</td>
+            </tr>
+            <tr>
+                <th>Glucose</th>
+                <td>{{ vegetable.glucose }}</td>
+            </tr>
+            <tr>
+                <th>Protein</th>
+                <td>{{ vegetable.protein }}</td>
+            </tr>
+            <tr>
+                <th>Lipid</th>
+                <td>{{ vegetable.lipid }}</td>
+            </tr>
+            <tr>
+                <th>IntroText</th>
+                <td>{{ vegetable.introText }}</td>
+            </tr>
+            <tr>
+                <th>CultureText</th>
+                <td>{{ vegetable.cultureText }}</td>
+            </tr>
+            <tr>
+                <th>EntretienText</th>
+                <td>{{ vegetable.entretienText }}</td>
+            </tr>
+            <tr>
+                <th>RecolteText</th>
+                <td>{{ vegetable.recolteText }}</td>
+            </tr>
+            <tr>
+                <th>Culture_start</th>
+                <td>{{ vegetable.cultureStart }}</td>
+            </tr>
+            <tr>
+                <th>Culture_end</th>
+                <td>{{ vegetable.cultureEnd }}</td>
+            </tr>
+            <tr>
+                <th>Recolte_start</th>
+                <td>{{ vegetable.recolteStart }}</td>
+            </tr>
+            <tr>
+                <th>Recolte_end</th>
+                <td>{{ vegetable.recolteEnd }}</td>
+            </tr>
+            <tr>
+                <th>Cycle</th>
+                <td>{{ vegetable.cycle }}</td>
+            </tr>
+            <tr>
+                <th>Exposition</th>
+                <td>{{ vegetable.exposition }}</td>
+            </tr>
+            <tr>
+                <th>Yield</th>
+                <td>{{ vegetable.yield }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('vegetable_index') }}">back to list</a>
+
+    <a href="{{ path('vegetable_edit', {'id': vegetable.id}) }}">edit</a>
+
+    {{ include('vegetable/_delete_form.html.twig') }}
+{% endblock %}

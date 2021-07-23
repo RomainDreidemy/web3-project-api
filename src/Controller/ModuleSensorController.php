@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Module;
 use App\Repository\ModuleRepository;
 use App\Services\ModuleService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
