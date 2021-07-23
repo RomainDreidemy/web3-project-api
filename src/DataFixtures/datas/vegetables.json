@@ -17,10 +17,11 @@
     "end_recolte": "septembre",
     "Culture": "Suivant les variétés, on sème de février à juillet, en lignes espacées de 20 cm.\nFaites un sillon de 2 à 3 cm de profondeur et semez assez dense, la lavée des graines de carottes étant parfois aléatoire, irrégulière et lente (environ 3 semaines).<br><br>\nFermez le sillon et arrosez à la pomme d’arrosoir.",
     "Entretien": "Pour obtenir de jolies carottes, il est nécessaire d’éclaircir en deux temps, une première fois à 2 ou 3 cm quand le plant compte 4 à 5 feuilles, et une deuxième fois en espaçant chaque carotte de 7 à 8 cm. <br><br>\nPour vous éviter les deux éclaircissages, essayez de mélanger vos graines de carottes à des graines de radis qui se récolteront bien avant les carottes.<br><br>\nUn binage et un sarclage réguliers sont indispensables. Vous pouvez aussi pailler pour limiter les arrosages en période de sécheresse.<br><br>\nLes arrosages seront réguliers mais sans excès. Les carottes aiment les sols frais, mais pas humides.",
-    "Recolte": "La récolte se fait environ 80 jours après le semis, au fur et à mesure des besoins, à l’aide d’une bêche à bec."
+    "Recolte": "La récolte se fait environ 80 jours après le semis, au fur et à mesure des besoins, à l’aide d’une bêche à bec.",
+    "svg": "<svg width=\"142\" height=\"142\" viewBox=\"0 0 142 142\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M70.7565 75.1473C73.1743 74.5734 71.9237 61.0109 67.9631 44.8547C64.0026 28.6985 58.8318 16.0666 56.414 16.6406C53.9962 17.2145 55.2468 30.777 59.2074 46.9332C63.168 63.0894 68.3387 75.7213 70.7565 75.1473Z\" fill=\"#5D503D\"/>\n<path d=\"M81.2042 44.3044C84.9233 28.0933 85.9715 14.5148 83.5454 13.9759C81.1194 13.4369 76.1378 26.1416 72.4188 42.3527C68.6997 58.5637 67.6515 72.1423 70.0775 72.6812C72.5036 73.2201 77.4852 60.5154 81.2042 44.3044Z\" fill=\"#5D503D\"/>\n<path d=\"M86.3176 58.6264C93.1317 49.4956 96.8448 40.785 94.611 39.1708C92.3772 37.5565 85.0423 43.6499 78.2282 52.7807C71.4141 61.9115 67.701 70.6221 69.9348 72.2364C72.1686 73.8506 79.5034 67.7573 86.3176 58.6264Z\" fill=\"#5D503D\"/>\n<path d=\"M67.9669 67.9862C69.5253 66.589 66.0551 60.344 60.216 54.0376C54.377 47.7312 48.3801 43.7515 46.8217 45.1487C45.2633 46.5459 48.7335 52.791 54.5726 59.0974C60.4117 65.4038 66.4085 69.3834 67.9669 67.9862Z\" fill=\"#5D503D\"/>\n<path d=\"M87.4292 74.9801H54.9609V74.4315C54.9609 69.4089 59.0784 65.3571 64.1824 65.3571H78.2077C83.3117 65.3571 87.4292 69.4089 87.4292 74.4315V74.9801Z\" fill=\"#EAAE78\"/>\n<path d=\"M71.1736 129.974C62.2095 129.974 54.9609 83.1676 54.9609 74.4309V74.3465H87.3863V74.4309C87.4292 83.2098 80.1378 129.974 71.1736 129.974Z\" fill=\"#EAAE78\"/>\n</svg>"
   },
   {
-    "Property": "Pomme de Terre",
+    "Property": "Pomme de terre",
     "Family": "Légumes racines ",
     "Cycle": "Annuel",
     "Exposition": "Ensoleillée",
@@ -37,7 +38,8 @@
     "end_recolte": "septembre",
     "Culture": "Les plants de pomme de terre doivent être germés pour être mis en terre.\nVous pouvez le faire vous même dès janvier sur des clayettes installées dans une pièce lumineuse. Sinon, achetez des tubercules prêts à plantation.<br><br>\nJuste avant la plantation, il faut ameublir la terre au croc.<br><br>\nFormez ensuite des sillons, espacés de 50 cm et plantez les tubercules à 30 cm les uns des autres, à 8 cm de profondeur, les germes vers le haut.",
     "Entretien": "Le geste essentiel pour avoir de belles récoltes est le buttage qui protège les pommes de terre de la lumière et d’éventuels gels. Le premier buttage intervient lorsque les plants mesurent 20 à 25 cm.\nIl consiste à remonter la terre contre les tiges.\nCette opération devra s’appliquer plusieurs fois jusqu’à la récolte.<br><br>\nLes plants de pomme devront être également binés régulièrement afin d’éliminer les mauvaises herbes.\nEnfin, les arrosages se font uniquement par temps sec et en cours de floraison.",
-    "Recolte": "La récolte intervient de juin à octobre, soit environ 90 à 120 jours après la plantation, dès que les feuilles sont fanées. Utilisez la fourche-bêche pour récolter les pommes de terre en veillant à ne pas les abîmer.\nLaissez votre récolte une journée au soleil avant de la rentrer. D’une façon générale, choisissez une journée ensoleillée pour procéder à la récolte."
+    "Recolte": "La récolte intervient de juin à octobre, soit environ 90 à 120 jours après la plantation, dès que les feuilles sont fanées. Utilisez la fourche-bêche pour récolter les pommes de terre en veillant à ne pas les abîmer.\nLaissez votre récolte une journée au soleil avant de la rentrer. D’une façon générale, choisissez une journée ensoleillée pour procéder à la récolte.",
+    "svg": "<svg width=\"142\" height=\"142\" viewBox=\"0 0 142 142\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M105.289 33.4072C95.3717 24.2832 84.3965 23.4457 73.8179 31.6882C68.8812 35.5229 64.5616 40.2392 60.0657 44.691C54.3797 50.2889 48.8259 56.063 43.2281 61.7931C38.9966 66.0686 34.5448 70.1678 30.666 74.7078C26.9194 79.1156 25.1563 84.493 26.3905 90.3112C29.6963 106.267 41.6413 114.862 57.0243 115.788C67.4707 116.405 77.3 113.937 86.3359 108.692C105.245 97.7603 114.545 80.9668 116 61.4405C115.78 49.4073 112.959 40.4596 105.289 33.4072Z\" fill=\"#C4A07F\"/>\n</svg>"
   },
   {
     "Property": "Gingembre",
@@ -57,7 +59,8 @@
     "end_recolte": "november",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": "<svg width=\"142\" height=\"142\" viewBox=\"0 0 142 142\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M82.2416 111.797C79.8653 111.821 76.6249 111.485 73.4085 110.573C71.8483 110.117 70.2641 109.973 68.6559 110.021C67.1197 110.069 65.9195 110.861 64.9114 112.229C63.7833 113.766 62.7031 115.374 61.3349 116.646C59.3667 118.47 57.1104 119.334 54.6861 119.598C51.7817 119.91 49.0214 119.214 46.381 117.726C44.3648 116.574 42.5406 115.038 41.2204 112.781C40.2363 111.101 39.6602 109.205 39.5402 107.141C39.3721 103.9 39.9002 100.852 41.1484 97.9715C41.7244 96.6514 42.5165 95.4992 43.1406 94.203C44.2208 91.9228 44.3408 89.6425 43.1166 87.3382C42.2525 85.706 41.1724 84.3138 40.0442 82.9696C38.58 81.2414 37.0679 79.5612 35.5797 77.857C34.4035 76.5128 33.2514 75.1686 32.2672 73.6084C30.9951 71.6162 30.7791 69.3599 31.1871 66.9836C31.5952 64.6313 32.6273 62.8791 34.4275 61.8229C35.5317 61.1748 36.7078 61.0308 37.908 61.1748C38.7001 61.2708 39.4922 61.4389 40.2843 61.5589C40.7883 61.6309 40.8843 61.4629 40.7163 60.8868C40.3803 59.7827 39.8282 58.7985 39.3241 57.8144C37.5959 54.454 36.6598 50.8295 36.8038 46.845C36.8758 44.5407 37.3799 42.3564 38.58 40.5322C39.3001 39.4281 40.3083 38.756 41.3644 38.2519C44.0527 37.0278 46.5011 37.7479 48.7333 39.7881C50.4376 41.3483 51.5417 43.4366 52.0458 45.9809C52.1178 46.341 52.2378 46.677 52.3578 47.013C52.6458 47.7811 53.1019 47.9972 53.75 47.6851C54.134 47.4931 54.5181 47.2531 54.9021 47.037C57.0864 45.7889 59.0306 46.533 60.6389 48.5492C61.911 50.1334 62.151 52.1017 61.935 54.1899C61.719 56.3262 61.1189 58.3425 60.5668 60.3587C60.3028 61.3189 60.0388 62.279 59.9908 63.3111C59.9188 64.5353 60.8309 65.7354 61.839 65.8314C62.8471 65.9274 63.6152 65.3034 64.3113 64.4873C65.6315 62.9271 66.1115 60.9348 66.2796 58.7985C66.5196 55.9662 66.4476 53.1578 66.3036 50.3255C66.1596 47.109 65.8475 43.9166 65.9675 40.7002C66.0395 38.636 66.2076 36.5957 66.8316 34.6515C67.1677 33.6433 67.5517 32.6832 68.1998 31.9151C69.688 30.1869 71.6563 29.1308 73.7925 30.2109C75.0167 30.835 75.9288 31.9391 76.6969 33.2353C77.321 34.2914 77.681 35.4916 78.0891 36.6917C78.3051 37.2918 78.5451 37.8919 78.8332 38.4439C79.0972 38.924 79.4572 39.14 79.9373 39.092C80.2974 39.068 80.5134 38.852 80.6094 38.3959C80.7774 37.5318 80.6094 36.6917 80.5614 35.8516C80.4174 33.7153 80.1533 31.6031 80.4414 29.4668C80.7774 26.9225 81.7855 24.9542 83.5378 23.514C84.6179 22.6259 85.7941 22.0499 87.1142 22.0019C88.8184 21.9538 90.2106 22.842 91.4588 24.1861C91.9388 24.7142 92.3949 25.2663 92.7789 25.9144C93.7631 27.5706 94.6512 27.5226 96.1154 26.6104C97.4115 25.8183 98.6357 24.8582 99.9319 24.0661C101.732 22.986 103.628 22.794 105.549 23.5621C108.381 24.6902 109.989 27.1865 110.685 30.643C111.237 33.3793 111.069 36.0436 110.133 38.612C109.461 40.4842 108.357 41.8764 106.893 42.8605C105.549 43.7486 104.084 44.3487 102.716 45.1408C101.684 45.7409 100.7 46.365 100.028 47.5891C99.5718 48.4052 99.4278 49.2933 99.4758 50.2534C99.4998 50.6615 99.6918 50.8535 100.028 50.8295C100.844 50.7575 101.684 50.6855 102.5 50.6135C104.276 50.4455 105.837 51.0215 107.157 52.4857C108.573 54.0459 109.437 56.0142 109.821 58.2705C110.277 61.0548 109.701 63.5751 108.309 65.8314C106.389 68.9758 103.772 70.8961 100.796 72.1922C98.1076 73.3684 95.3233 73.9205 92.5389 74.4725C90.8347 74.8086 89.1305 75.0966 87.4503 75.6727C86.3461 76.0567 85.29 76.5128 84.4259 77.4489C83.9458 77.953 83.6098 78.577 83.2977 79.2251C83.1537 79.5372 83.2017 79.8252 83.3937 80.1132C83.8498 80.7133 84.3779 81.1454 85.0019 81.3854C86.2021 81.8895 87.4023 81.7695 88.6264 81.5534C90.3066 81.2414 91.9388 80.5933 93.595 80.2093C95.1072 79.8732 96.5954 79.5132 98.1316 79.5852C99.8118 79.6572 101.492 79.9452 103.076 80.7613C105.813 82.1775 107.205 84.8419 107.589 88.3223C107.997 91.9228 107.805 95.4752 106.749 98.9076C105.885 101.74 104.492 104.14 102.572 106.085C100.46 108.245 98.0116 109.493 95.3953 110.213C93.427 110.741 91.4348 111.101 89.4185 111.341C87.3542 111.677 85.266 111.773 82.2416 111.797Z\" fill=\"#CEC3B7\"/>\n</svg>"
   },
   {
     "Property": "Radis",
@@ -77,7 +80,8 @@
     "end_recolte": "november",
     "Culture": "Avant de semer les radis, débarrassez la terre des cailloux. Vous pouvez semer en ligne ou à la volée. Ensuite, déposez les graines à l’aide d’un semoir sans trop les serrer.<br><br>\nRecouvrez de terre. 1 cm suffit pour les radis ronds, 2 à 3 cm pour les variétés longues, les radis noirs et les radis blancs.<br><br>\nTassez avec le dos du râteau et arrosez abondamment avec la pomme d’arrosoir.\nLorsque vos radis ont développé 2 à 3 feuilles, il est temps d’éclaircir, là encore plus ou moins largement suivant la variété.",
     "Entretien": "Les radis ont besoin d’être copieusement arrosés, surtout en pleine chaleur.<br><br>\nC’est la seule solution pour qu’ils ne piquent pas. Préférez la pomme d’arrosoir.<br><br>\nPour garder un peu d’humidité au sol, vous pouvez pailler les radis noirs et les radis blancs.",
-    "Recolte": "La récolte se fait quand le radis n’est pas trop gros et la fane bien fraîche."
+    "Recolte": "La récolte se fait quand le radis n’est pas trop gros et la fane bien fraîche.",
+    "svg": "<svg width=\"142\" height=\"142\" viewBox=\"0 0 142 142\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M97.2917 91.5026C97.2917 105.074 69.8087 128.147 69.8087 128.147C69.8087 128.147 42.3257 105.074 42.3257 91.5026C42.3257 77.9308 54.5404 67.0733 69.8087 67.0733C85.077 67.0733 97.2917 78.1004 97.2917 91.5026Z\" fill=\"#D1719F\"/>\n<path d=\"M80.5648 22.242C80.7726 22.5097 80.9805 22.7774 81.1884 23.045C81.8404 21.6805 82.72 20.4252 83.9657 19.4578C88.1479 16.21 94.1622 16.9747 97.4189 21.1683C100.676 25.3619 99.9274 31.3783 95.7453 34.6261L95.6563 34.6952C96.4776 35.2017 97.1902 35.9356 97.8138 36.7387C101.07 40.9322 100.322 46.9487 96.1401 50.1965C93.8266 51.9931 90.8596 52.5809 88.2083 51.9221C87.7248 53.871 86.5192 55.8085 84.8285 57.1214C82.0701 59.2636 78.4007 59.6816 75.4226 58.4184C73.0997 60.9376 70.5302 64.7925 70.6915 69.9596C70.6915 69.9596 62.4189 64.0829 64.7271 53.279C63.4311 52.7122 62.2633 51.7595 61.3625 50.5996C58.1058 46.406 58.8541 40.3896 63.0362 37.1418C64.1929 36.2435 65.5576 35.6128 66.8828 35.2988C66.3781 34.8326 65.8734 34.3663 65.4576 33.831C62.2009 29.6374 62.9492 23.621 67.1313 20.3732C71.2937 17.2837 77.3081 18.0484 80.5648 22.242Z\" fill=\"#638B49\"/>\n<path d=\"M38.6939 28.6178C38.6083 28.9458 38.5228 29.2737 38.4372 29.6016C37.3002 28.6044 35.9971 27.7974 34.4709 27.3992C29.3473 26.0624 24.1211 29.1354 22.7806 34.273C21.4401 39.4107 24.4988 44.6453 29.6224 45.9822L29.7314 46.0106C29.1762 46.7998 28.8105 47.7551 28.5538 48.7389C27.2133 53.8766 30.272 59.1112 35.3955 60.4481C38.2299 61.1876 41.1884 60.5585 43.3655 58.9082C44.578 60.5088 46.4495 61.8144 48.5208 62.3548C51.9002 63.2366 55.4374 62.1747 57.6766 59.8401C60.8044 61.24 64.6851 63.7703 66.5731 68.5828C66.5731 68.5828 71.8603 59.9215 65.4812 50.9017C66.449 49.8699 67.1468 48.5342 67.5176 47.1131C68.858 41.9755 65.7994 36.7408 60.6758 35.404C59.2586 35.0342 57.7559 34.9924 56.4141 35.2261C56.6943 34.5987 56.9744 33.9713 57.1455 33.3154C58.486 28.1777 55.4274 22.9431 50.3038 21.6063C45.2607 20.4072 40.0344 23.4802 38.6939 28.6178Z\" fill=\"#638B49\"/>\n</svg>"
   },
   {
     "Property": "Oignon",
@@ -97,7 +101,8 @@
     "end_recolte": "septembre",
     "Culture": "Pour cultiver l’oignon, deux méthodes sont possibles. <br><br>\nLe semis : Les oignons blancs se sèment en pépinière à la fin de l’été, puis les bulbes sont repiqués à l’automne pour une récolte au printemps suivant. Respectez une distance de 8 x 15 cm entre les plants.<br><br>\nLe semis des oignons de couleur se réalise directement en place à la fin de l’hiver, peu importe la région de France où vous habitez, afin d’obtenir une récolte en été. Prévoyez un espacement de 30 à 35 cm, puis éclaircissez à 15-20 cm.<br><br>\nLa plantation de bulbes d’oignons : Cette méthode de culture est la plus simple puisqu’elle consiste à planter les bulbes directement en place. Espacez vos plants de 10 à 15 cm sur des lignes distantes de 20 cm.",
     "Entretien": "Les cultures d’oignons doivent être maintenues propres : binez entre les rangs pour supprimer les mauvaises herbes et aérez la terre. Inutile d’arroser et de pailler. L’arrosage n’est à envisager que par temps très sec, et seulement si la récolte n’est pas prévue dans les 3-4 semaines.<br><br>\nVous pouvez fertiliser les oignons de couleur avec un engrais riche en azote, lors de l’éclaircissage puis un mois plus tard, lors du binage.",
-    "Recolte": "Les oignons rouges et les jaunes se récoltent en août tandis que les oignons blancs se récoltent en avril ou juin, avant complète maturité.<br><br>\nPour que vos oignons se gardent le plus longtemps possible, il faut les arracher au bon moment lorsque les conditions sont favorables.<br><br>\nSi votre souhait est de les consommer tout de suite, vous pouvez les collecter avec leur feuillage encore vert. Autrement, pour une conservation de longue durée, il faudra attendre que le feuillage soit jauni.<br><br>\nRécoltez les oignons par temps ensoleillé et employez une fourche-bêche pour ne pas abîmer les bulbes. Pour améliorer leur conservation, retirez les feuilles, enlevez la terre puis laissez-les sécher 2 à 3 jours sur le sol."
+    "Recolte": "Les oignons rouges et les jaunes se récoltent en août tandis que les oignons blancs se récoltent en avril ou juin, avant complète maturité.<br><br>\nPour que vos oignons se gardent le plus longtemps possible, il faut les arracher au bon moment lorsque les conditions sont favorables.<br><br>\nSi votre souhait est de les consommer tout de suite, vous pouvez les collecter avec leur feuillage encore vert. Autrement, pour une conservation de longue durée, il faudra attendre que le feuillage soit jauni.<br><br>\nRécoltez les oignons par temps ensoleillé et employez une fourche-bêche pour ne pas abîmer les bulbes. Pour améliorer leur conservation, retirez les feuilles, enlevez la terre puis laissez-les sécher 2 à 3 jours sur le sol.",
+    "svg": "<svg width=\"142\" height=\"142\" viewBox=\"0 0 142 142\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M70.7204 82.1471C72.3014 82.0668 72.6455 65.8804 71.4888 45.9937C70.3321 26.1071 68.1127 10.051 66.5316 10.1313C64.9505 10.2116 64.6065 26.398 65.7632 46.2846C66.9199 66.1713 69.1393 82.2274 70.7204 82.1471Z\" fill=\"#6C8756\"/>\n<path d=\"M72.6772 98.5653C74.3578 98.6705 76.6108 82.6318 77.7093 62.7419C78.8078 42.852 78.336 26.6428 76.6554 26.5376C74.9748 26.4324 72.7219 42.4711 71.6233 62.361C70.5248 82.2509 70.9967 98.4601 72.6772 98.5653Z\" fill=\"#6C8756\"/>\n<path d=\"M102.982 103.606C103.075 105.56 102.796 107.98 102.238 110.306C100.656 117.379 96.4684 122.404 89.6752 124.73C78.2292 128.638 66.5971 128.638 55.1511 125.009C45.8454 122.031 41.937 114.773 41.0995 105.374C40.355 96.1615 43.7981 89.2753 51.1496 84.0641C54.8719 81.3655 58.6872 78.946 62.5026 76.3404C66.1318 73.8278 69.4818 71.1292 71.343 66.9416C71.8083 66.011 72.3666 66.011 72.7388 66.8486C75.3444 72.2459 80.1834 75.3167 84.9293 78.4807C88.7446 81.0863 92.653 83.3196 96.0031 86.5766C101.307 91.6017 103.075 95.8823 102.982 103.606Z\" fill=\"#D9BCA1\"/>\n</svg>"
   },
   {
     "Property": "Betterave",
@@ -117,7 +122,8 @@
     "end_recolte": "oktober",
     "Culture": "Le semis se fait en pleine terre, à la fin du printemps, quand la terre atteint 10 ° et que les risques de gelée sont écartés.\nDonc le semis peut s’échelonner de fin mars à mi-juin suivant les régions.\nLe semis se pratique en sillons espacés les uns des autres de 30 cm. <br><br>\nSi on souhaite de petites betteraves, on peut semer une graine tous les 5 à 10 cm, si on préfère obtenir de plus grosses betteraves, on sème en poquets espacés de 20 cm dans lesquels on pose 4 à 5 graines. Seul le plus gros plant sera conservé lorsqu’il comptera 3 à 4 feuilles. <br><br>\nLe semis en mottes est également assez efficace. Il suffit ensuite de découper les mottes où ont germées les graines de betteraves et de les mettre en terre ainsi.",
     "Entretien": "Les betteraves doivent être binées et sarclées régulièrement. Et surtout arrosées de façon régulière afin qu’une certaine humidité soit conservée. Sans pour autant être dans l’excès ! <br><br>\nÉvitez à tout prix les à-coups en matière d’arrosage qui rendent la chair filandreuse. Un bon paillage est recommandé.",
-    "Recolte": "La récolte intervient 3 mois environ après le semis, soit de juillet à la fin octobre. Elle se fait au fur et à mesure des besoins, la betterave pouvant rester en terre jusqu’aux gelées."
+    "Recolte": "La récolte intervient 3 mois environ après le semis, soit de juillet à la fin octobre. Elle se fait au fur et à mesure des besoins, la betterave pouvant rester en terre jusqu’aux gelées.",
+    "svg": "<svg width=\"142\" height=\"142\" viewBox=\"0 0 142 142\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M73.2712 56.0782C73.2712 56.0782 58.486 56.8339 49.8769 48.1426C41.2678 39.4513 42.0164 24.3359 42.0164 24.3359C42.0164 24.3359 56.8016 23.5802 65.4107 32.2715C74.0198 40.9628 73.2712 56.0782 73.2712 56.0782Z\" fill=\"#4B6E35\"/>\n<path d=\"M69.7153 56.0783C69.7153 56.0783 68.9667 41.1519 77.5758 32.4606C86.1848 23.7692 100.97 24.3361 100.97 24.3361C100.97 24.3361 101.906 39.4514 93.2967 48.1428C84.6876 56.8341 69.7153 56.0783 69.7153 56.0783Z\" fill=\"#4B6E35\"/>\n<path d=\"M71.587 57.7792C71.587 57.7792 60.5449 47.7653 60.5449 35.4841C60.5449 23.2029 71.587 13 71.587 13C71.587 13 82.6291 23.0139 82.6291 35.2951C82.6291 47.5764 71.587 57.7792 71.587 57.7792Z\" fill=\"#4B6E35\"/>\n<path d=\"M102.119 81.6121C102.119 99.2893 70.601 129.341 70.601 129.341C70.601 129.341 39.083 99.2893 39.083 81.6121C39.083 63.9348 53.091 49.793 70.601 49.793C88.111 49.793 102.119 64.1558 102.119 81.6121Z\" fill=\"#A779AC\"/>\n</svg>"
   },
   {
     "Property": "Tomate",
@@ -137,10 +143,11 @@
     "end_recolte": "oktober",
     "Culture": "Pour faire pousser des tomates, il est intéressant de démarrer par la graine.\nLa technique des semis, qui est une pré germination maîtrisée, fonctionne très bien avec cette espèce et vous pourrez prendre plaisir à voir grandir votre plante avant sa mise en terre. <br><br>\nAvec l’arrivée du mois de mars, il est temps de semer vos tomates. Pour réussir vos semis, rien de mieux que la technique de plantation en bouteille. Vous devrez choisir le semi le plus robuste et le plus prometteur de chaque bouteille. <br><br>\nVos semis sont robustes et ont bien poussé ? Il est temps de les repiquer, c’est-à-dire de les planter dans votre potager.",
     "Entretien": "Vous avez sans doute remarqué sur vos plants, à l’intersection entre deux tiges, une petite « branche » se former. <br><br>\nC’est ce que l’on appelle un gourmand. Il est préconisé de les supprimer à la main ou au sécateur. <br><br>\nVos plants de tomates grandissent à vue d’œil et ont besoin de surveillance ! Comme tout être vivant, la tomate est sujette à des maladies. Pour l’en préserver, adoptez de bons gestes de jardinier comme : effectuer une rotation de vos cultures chaque année, jeter les plants malades dès les premiers symptômes, choisir des variétés plus résistantes, espacer vos pieds suffisamment, n’humidifier par le feuillage.",
-    "Recolte": "La récolte des tomates a lieu l’été et peut aller jusqu’à l’automne si le climat le permet. <br><br>\nRécoltez la tomate lorsqu’elle est bien colorée, en général 4 à 5 mois après le semis. <br><br>\nVous pourrez les cueillir et les faire mûrir dans votre garage ou sur une bordure de fenêtre. <br><br>\nContrairement à d’autres fruits et légumes du potager, on ne peut pas garder un plant de tomates d’une année sur l’autre. Il faut donc obligatoirement procéder à un arrachage même si cela prend un peu de temps et que c’est assez fastidieux."
+    "Recolte": "La récolte des tomates a lieu l’été et peut aller jusqu’à l’automne si le climat le permet. <br><br>\nRécoltez la tomate lorsqu’elle est bien colorée, en général 4 à 5 mois après le semis. <br><br>\nVous pourrez les cueillir et les faire mûrir dans votre garage ou sur une bordure de fenêtre. <br><br>\nContrairement à d’autres fruits et légumes du potager, on ne peut pas garder un plant de tomates d’une année sur l’autre. Il faut donc obligatoirement procéder à un arrachage même si cela prend un peu de temps et que c’est assez fastidieux.",
+    "svg": "<svg width=\"142\" height=\"142\" viewBox=\"0 0 142 142\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M70.6337 44.9975C70.6337 44.9975 37.7006 30.4805 28.0622 66.2858C18.4237 102.091 49.6323 120.99 72.7165 118.415C95.8255 115.948 118.875 103.817 115.552 77.4817C112.445 51.097 100.649 35.9329 70.6337 44.9975Z\" fill=\"#AF565F\"/>\n<path d=\"M97.6108 29.8896C96.7404 29.0525 90.8167 33.7567 84.3047 40.3248C83.9258 40.6424 83.572 41.0695 83.3004 41.3624C83.629 40.8259 83.9324 40.1799 84.261 39.6434C88.6851 31.3657 91.3537 24.2983 90.319 23.7295C89.2843 23.1607 84.8365 29.3694 80.3872 37.5376C80.3051 37.6718 80.2481 37.9154 80.1659 38.0495C80.1408 37.94 80.2481 37.9154 80.2229 37.8059C82.0662 28.6234 82.5766 21.015 81.485 20.6898C80.4185 20.4741 78.2176 26.6271 76.3876 34.8846C76.0024 26.3297 74.8395 19.7976 73.716 19.8254C72.4852 19.8779 71.8675 27.5109 72.1068 36.9061C72.1002 37.3686 72.1187 37.9406 72.2194 38.3784C72.0684 37.7217 71.8101 37.0896 71.6842 36.5423C68.8441 27.6299 65.5482 20.6662 64.3929 21.0471C63.2376 21.428 64.627 28.9452 67.5996 37.9424C67.6499 38.1613 67.6751 38.2708 67.7254 38.4897C67.7003 38.3802 67.7003 38.3803 67.5678 38.2955C62.278 30.5225 57.1444 24.9033 56.1719 25.5879C55.1994 26.2725 58.6848 33.0774 63.9746 40.8503C64.6556 41.8462 65.3365 42.8421 66.1248 43.8133C70.7151 50.0184 79.5003 50.8796 85.0835 45.6775C85.8162 44.9328 86.574 44.2976 87.3067 43.5529C93.9009 36.8507 98.3739 30.7514 97.6108 29.8896Z\" fill=\"#6C6938\"/>\n</svg>"
   },
   {
-    "Property": "Putiron",
+    "Property": "Citrouille",
     "Family": "Légumes fruits",
     "Cycle": "",
     "Exposition": "",
@@ -157,7 +164,8 @@
     "end_recolte": "november",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
     "Property": "Aubergine",
@@ -177,7 +185,8 @@
     "end_recolte": "december",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
     "Property": "Haricot vert",
@@ -197,7 +206,8 @@
     "end_recolte": "julitte",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
     "Property": "Concombre",
@@ -217,7 +227,8 @@
     "end_recolte": "septembre",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
     "Property": "Poivron",
@@ -237,7 +248,8 @@
     "end_recolte": "septembre",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
     "Property": "Epinard",
@@ -257,10 +269,11 @@
     "end_recolte": "november",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
-    "Property": "Ruccula",
+    "Property": "Roquette",
     "Family": "Légumes feuilles",
     "Cycle": "Annuel",
     "Exposition": "Ensoleillée, mi-ombre",
@@ -277,10 +290,11 @@
     "end_recolte": "mars",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
-    "Property": "Mache",
+    "Property": "Mâche",
     "Family": "Légumes feuilles",
     "Cycle": "",
     "Exposition": "",
@@ -297,7 +311,8 @@
     "end_recolte": "mars",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
     "Property": "Mangold",
@@ -317,10 +332,11 @@
     "end_recolte": "",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
-    "Property": "Laitue iceberg",
+    "Property": "Laitue",
     "Family": "Légumes feuilles",
     "Cycle": "",
     "Exposition": "",
@@ -337,10 +353,11 @@
     "end_recolte": "",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
-    "Property": "Raddichie",
+    "Property": "Radicchio",
     "Family": "Légumes feuilles",
     "Cycle": "",
     "Exposition": "",
@@ -357,10 +374,11 @@
     "end_recolte": "",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
-    "Property": "Capres",
+    "Property": "Câpre",
     "Family": "Légumes fleurs",
     "Cycle": "",
     "Exposition": "",
@@ -377,10 +395,11 @@
     "end_recolte": "",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
-    "Property": "Broccoli",
+    "Property": "Brocoli",
     "Family": "Légumes fleurs",
     "Cycle": "",
     "Exposition": "Ensoleillée",
@@ -397,10 +416,11 @@
     "end_recolte": "",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
-    "Property": "Chou Fleur",
+    "Property": "Chou-fleur",
     "Family": "Légumes fleurs",
     "Cycle": "Bisannuel",
     "Exposition": "Ensoleillé",
@@ -417,7 +437,8 @@
     "end_recolte": "",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   },
   {
     "Property": "Artichaut",
@@ -437,6 +458,7 @@
     "end_recolte": "",
     "Culture": "",
     "Entretien": "",
-    "Recolte": ""
+    "Recolte": "",
+    "svg": ""
   }
 ]

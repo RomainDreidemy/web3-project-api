@@ -36,6 +36,7 @@ class VegetableFixtures extends Fixture
                     ->setCycle($vegetable['Cycle'])
                     ->setExposition($vegetable['Exposition'])
                     ->setYield($vegetable['Rendement'])
+                    ->setSvg($vegetable['svg'])
 
                     ->setCultureStart($vegetable['start_culture'])
                     ->setCultureEnd($vegetable['end_culture'])
