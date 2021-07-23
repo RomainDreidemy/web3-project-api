@@ -152,6 +152,12 @@ class Vegetable
     #[Groups(['Vegetable:read'])]
     private ?string $yield;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    #[Groups(['Vegetables:read', 'Vegetable:read'])]
+    private $svg;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -369,6 +375,18 @@ class Vegetable
     public function setYield(?string $yield): self
     {
         $this->yield = $yield;
+
+        return $this;
+    }
+
+    public function getSvg(): ?string
+    {
+        return $this->svg;
+    }
+
+    public function setSvg(?string $svg): self
+    {
+        $this->svg = $svg;
 
         return $this;
     }
