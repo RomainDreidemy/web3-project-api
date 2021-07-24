@@ -3,19 +3,14 @@
 
 namespace App\Services;
 
-
-use _HumbugBoxda2413717501\Nette\Neon\Exception;
 use App\Entity\Api\ModuleApi;
 use App\Entity\Module;
-use App\Entity\Sensor;
 use App\Entity\SensorData;
 use App\Entity\User;
 use App\Repository\ActionConditionRepository;
 use App\Repository\ModuleRepository;
 use App\Repository\SensorRepository;
 use App\Repository\SpecRepository;
-use PhpParser\Node\Expr\AssignOp\Mod;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ModuleService
 {
@@ -94,7 +89,7 @@ class ModuleService
 
             return $returnActions;
         } catch (\Exception $e) {
-            throw new Exception($e);
+            throw new \Exception($e);
         }
 
 
