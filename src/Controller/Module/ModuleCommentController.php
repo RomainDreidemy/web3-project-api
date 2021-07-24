@@ -135,28 +135,6 @@ class ModuleCommentController extends AbstractController
         }
     }
 
-    #[Route('/api/comments/{id}', name: 'module_comment_edition', methods: ['PATCH'])]
-    public function moduleCommentEdition(
-        string $id,
-        CommentRepository $commentRepository,
-        EntityManagerInterface $manager,
-        NormalizerInterface $normalizer,
-        Request $request
-    ): JsonResponse
-    {
-        try {
-            if (!$comment = $commentRepository->find($id)) {
-                return $this->json('Comment not found', 404);
-            }
-            $comment->setText($request->get(CommentKeys::text, $comment->getText()));
-            $manager->persist($comment);
-            $manager->flush();
-            return $this->json($normalizer->normalize($comment, 'json', ['groups' => 'Comment:read']));
-        } catch (Exception | ExceptionInterface $e) {
-            return $this->json($e, 400);
-        }
-    }
-
     #[Route('/api/comments/{id}', name: 'module_comment_remove', methods: ['DELETE'])]
     public function moduleCommentRemove(
         string $id,

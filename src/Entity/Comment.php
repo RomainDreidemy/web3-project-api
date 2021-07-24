@@ -111,31 +111,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'read' => false,
                 'write' => false
             ],
-            'edition_comment' => [
+            'PATCH' => [
                 'normalization_context' => ['groups' => ['Comment:read']],
+                'denormalization_context' => ['groups' => ['Comment:update']],
                 'openapi_context' => [
                     'security' => [['bearerAuth' => []]],
-                    'requestBody' => [
-                        'content' => [
-                            'multipart/form-data' => [
-                                'schema' => [
-                                    'type' => 'object',
-                                    'properties' => [
-                                        CommentKeys::text => [
-                                            'type' => 'string',
-                                            'format' => 'text',
-                                        ]
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                'method' => 'PATCH',
-                'controller' => ModuleCommentController::class,
-                'path' => '/comments/{comment}',
-                'read' => false,
-                'write' => false
+                ]
             ],
         ]
     ),
@@ -154,7 +135,7 @@ class Comment
     /**
      * @ORM\Column(type="text")
      */
-    #[Groups(['Module:read', 'Comments:write', 'Comment:read'])]
+    #[Groups(['Module:read', 'Comments:write', 'Comment:read', 'Comment:update'])]
     private string $text;
 
     /**
