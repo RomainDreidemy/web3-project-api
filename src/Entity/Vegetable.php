@@ -155,8 +155,13 @@ class Vegetable
     /**
      * @ORM\Column(type="text", nullable=true)
      */
+    private ?string $svg;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     #[Groups(['Vegetables:read', 'Vegetable:read'])]
-    private $svg;
+    private ?string $svgPath;
 
     public function getId(): ?int
     {
@@ -387,6 +392,18 @@ class Vegetable
     public function setSvg(?string $svg): self
     {
         $this->svg = $svg;
+
+        return $this;
+    }
+
+    public function getSvgPath(): ?string
+    {
+        return $this->svgPath;
+    }
+
+    public function setSvgPath(?string $svgPath): self
+    {
+        $this->svgPath = $svgPath;
 
         return $this;
     }
