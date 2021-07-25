@@ -16,6 +16,7 @@ class Image
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['Comment:read'])]
     private int $id;
 
     /**
