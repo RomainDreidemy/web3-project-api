@@ -31,7 +31,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ]
     ],
         itemOperations: ['GET' => [
-            'normalization_context' => ['groups' => ['Module:read']],
+            'normalization_context' => ['groups' => ['Module:read', 'Comment:read']],
             'openapi_context' => ['security' => [['bearerAuth' => []]]]
         ],
             'add_comments' => [
