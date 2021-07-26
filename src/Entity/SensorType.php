@@ -54,6 +54,11 @@ class SensorType
      */
     private $specs;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $icon_path;
+
     public function __construct()
     {
         $this->sensors = new ArrayCollection();
@@ -183,5 +188,17 @@ class SensorType
     public function __toString(): string
     {
         return $this->name ?? '';
+    }
+
+    public function getIconPath(): ?string
+    {
+        return $this->icon_path;
+    }
+
+    public function setIconPath(string $icon_path): self
+    {
+        $this->icon_path = $icon_path;
+
+        return $this;
     }
 }
