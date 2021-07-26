@@ -1,0 +1,38 @@
+[
+  {
+    "Name": "Température de l'air",
+    "Unit": "°C",
+    "influxId": "Air temperature",
+    "Icon": "/images/sensor_icons/Temperatur_dair.svg"
+  },
+  {
+    "Name": "Température de l'eau",
+    "Unit": "°C",
+    "influxId": "Water temperature",
+    "Icon": "/images/sensor_icons/Temperatur_deau.svg"
+  },
+  {
+    "Name": "Nutriment",
+    "Unit": "ms",
+    "influxId": "EC",
+    "Icon": "/images/sensor_icons/Nurriture.svg"
+  },
+  {
+    "Name": "pH",
+    "Unit": "pH",
+    "influxId": "PH",
+    "Icon": "/images/sensor_icons/Ph.svg"
+  },
+  {
+    "Name": "Luminosité",
+    "Unit": "lux",
+    "influxId": "Luminosity",
+    "Icon": "/images/sensor_icons/Lumiere.svg"
+  },
+  {
+    "Name": "Hygrometrie",
+    "Unit": "%",
+    "influxId": "Humidity",
+    "Icon": "/images/sensor_icons/Huminite_Air.svg"
+  }
+]

@@ -11,11 +11,11 @@ class FamilyFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $families = ['Légumes racines', 'Légumes fruits', 'Légumes feuilles', 'Légumes fleurs'];
+        $families = json_decode(file_get_contents(__DIR__ . '/datas/families.json'), true);
 
         foreach ($families as $family) {
             $family = (new Familly())
-                ->setName($family)
+                ->setName($family['Name'])
             ;
 
             $manager->persist($family);

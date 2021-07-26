@@ -1,0 +1,386 @@
+[
+  {
+    "SensorType": "Température de l'air",
+    "Family": "Légumes racines",
+    "Operator": "<",
+    "Value": 16,
+    "Title": "Température trop basse (< min)",
+    "Actions": "Couper l'extracteur d'air. Vérifier l'isolation de la serre et fermer les portes de la serre."
+  },
+  {
+    "SensorType": "Température de l'air",
+    "Family": "Légumes feuilles",
+    "Operator": "<",
+    "Value": 16,
+    "Title": "Température trop basse (< min)",
+    "Actions": "Couper l'extracteur d'air. Vérifier l'isolation de la serre et fermer les portes de la serre."
+  },
+  {
+    "SensorType": "Température de l'air",
+    "Family": "Légumes fleurs",
+    "Operator": "<",
+    "Value": 16,
+    "Title": "Température trop basse (< min)",
+    "Actions": "Couper l'extracteur d'air. Vérifier l'isolation de la serre et fermer les portes de la serre."
+  },
+  {
+    "SensorType": "Température de l'air",
+    "Family": "Légumes fruits",
+    "Operator": "<",
+    "Value": 16,
+    "Title": "Température trop basse (< min)",
+    "Actions": "Couper l'extracteur d'air. Vérifier l'isolation de la serre et fermer les portes de la serre."
+  },
+  {
+    "SensorType": "Température de l'air",
+    "Family": "Légumes racines",
+    "Operator": ">",
+    "Value": 25,
+    "Title": "Température trop élevée  (> max)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin de faire redescendre la température rapidement. <br>Déployer la toile d'ombrage."
+  },
+  {
+    "SensorType": "Température de l'air",
+    "Family": "Légumes feuilles",
+    "Operator": ">",
+    "Value": 25,
+    "Title": "Température trop élevée  (> max)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin de faire redescendre la température rapidement. <br>Déployer la toile d'ombrage."
+  },
+  {
+    "SensorType": "Température de l'air",
+    "Family": "Légumes fleurs",
+    "Operator": ">",
+    "Value": 25,
+    "Title": "Température trop élevée  (> max)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin de faire redescendre la température rapidement. <br>Déployer la toile d'ombrage."
+  },
+  {
+    "SensorType": "Température de l'air",
+    "Family": "Légumes fruits",
+    "Operator": ">",
+    "Value": 25,
+    "Title": "Température trop élevée  (> max)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin de faire redescendre la température rapidement. <br>Déployer la toile d'ombrage."
+  },
+  {
+    "SensorType": "Température de l'eau",
+    "Family": "Légumes racines",
+    "Operator": "<",
+    "Value": 18,
+    "Title": "Température trop basse (< min)",
+    "Actions": "Attention au gel ! L'eau doit toujours circuler dans l'ensemble des bacs, augmenter le thermostat de l'eau."
+  },
+  {
+    "SensorType": "Température de l'eau",
+    "Family": "Légumes feuilles",
+    "Operator": "<",
+    "Value": 18,
+    "Title": "Température trop basse (< min)",
+    "Actions": "Attention au gel ! L'eau doit toujours circuler dans l'ensemble des bacs, augmenter le thermostat de l'eau."
+  },
+  {
+    "SensorType": "Température de l'eau",
+    "Family": "Légumes fleurs",
+    "Operator": "<",
+    "Value": 18,
+    "Title": "Température trop basse (< min)",
+    "Actions": "Attention au gel ! L'eau doit toujours circuler dans l'ensemble des bacs, augmenter le thermostat de l'eau."
+  },
+  {
+    "SensorType": "Température de l'eau",
+    "Family": "Légumes fruits",
+    "Operator": "<",
+    "Value": 18,
+    "Title": "Température trop basse (< min)",
+    "Actions": "Attention au gel ! L'eau doit toujours circuler dans l'ensemble des bacs, augmenter le thermostat de l'eau."
+  },
+  {
+    "SensorType": "Température de l'eau",
+    "Family": "Légumes racines",
+    "Operator": ">",
+    "Value": 21,
+    "Title": "Température trop élevée  (> max)",
+    "Actions": "Il faut diminuer la température de l'air et rerégler le thermostat de l'eau !<br>• Si la température est déjà trop élevée (> 32°C) il est également possible de renouveler l'eau des circuits"
+  },
+  {
+    "SensorType": "Température de l'eau",
+    "Family": "Légumes feuilles",
+    "Operator": ">",
+    "Value": 21,
+    "Title": "Température trop élevée  (> max)",
+    "Actions": "Il faut diminuer la température de l'air et rerégler le thermostat de l'eau !<br>• Si la température est déjà trop élevée (> 32°C) il est également possible de renouveler l'eau des circuits"
+  },
+  {
+    "SensorType": "Température de l'eau",
+    "Family": "Légumes fleurs",
+    "Operator": ">",
+    "Value": 21,
+    "Title": "Température trop élevée  (> max)",
+    "Actions": "Il faut diminuer la température de l'air et rerégler le thermostat de l'eau !<br>• Si la température est déjà trop élevée (> 32°C) il est également possible de renouveler l'eau des circuits"
+  },
+  {
+    "SensorType": "Température de l'eau",
+    "Family": "Légumes fruits",
+    "Operator": ">",
+    "Value": 21,
+    "Title": "Température trop élevée  (> max)",
+    "Actions": "Il faut diminuer la température de l'air et rerégler le thermostat de l'eau !<br>• Si la température est déjà trop élevée (> 32°C) il est également possible de renouveler l'eau des circuits"
+  },
+  {
+    "SensorType": "Hygrometrie",
+    "Family": "Légumes racines",
+    "Operator": "<",
+    "Value": 0,
+    "Title": "Hygrométrie trop faible (< min)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin d'évacuer l'excès d'humidité qui pourrait entrainer le développement de maladies (champignons) et le pourrissement des légumes !"
+  },
+  {
+    "SensorType": "Hygrometrie",
+    "Family": "Légumes feuilles",
+    "Operator": "<",
+    "Value": 0,
+    "Title": "Hygrométrie trop faible (< min)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin d'évacuer l'excès d'humidité qui pourrait entrainer le développement de maladies (champignons) et le pourrissement des légumes !"
+  },
+  {
+    "SensorType": "Hygrometrie",
+    "Family": "Légumes fleurs",
+    "Operator": "<",
+    "Value": 0,
+    "Title": "Hygrométrie trop faible (< min)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin d'évacuer l'excès d'humidité qui pourrait entrainer le développement de maladies (champignons) et le pourrissement des légumes !"
+  },
+  {
+    "SensorType": "Hygrometrie",
+    "Family": "Légumes fruits",
+    "Operator": "<",
+    "Value": 0,
+    "Title": "Hygrométrie trop faible (< min)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin d'évacuer l'excès d'humidité qui pourrait entrainer le développement de maladies (champignons) et le pourrissement des légumes !"
+  },
+  {
+    "SensorType": "Hygrometrie",
+    "Family": "Légumes racines",
+    "Operator": ">",
+    "Value": 0,
+    "Title": "Hygrométrie trop élevée (> max)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin d'évacuer l'excès d'humidité qui pourrait entrainer le développement de maladies (champignons) et le pourrissement des légumes !"
+  },
+  {
+    "SensorType": "Hygrometrie",
+    "Family": "Légumes feuilles",
+    "Operator": ">",
+    "Value": 0,
+    "Title": "Hygrométrie trop élevée (> max)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin d'évacuer l'excès d'humidité qui pourrait entrainer le développement de maladies (champignons) et le pourrissement des légumes !"
+  },
+  {
+    "SensorType": "Hygrometrie",
+    "Family": "Légumes fleurs",
+    "Operator": ">",
+    "Value": 0,
+    "Title": "Hygrométrie trop élevée (> max)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin d'évacuer l'excès d'humidité qui pourrait entrainer le développement de maladies (champignons) et le pourrissement des légumes !"
+  },
+  {
+    "SensorType": "Hygrometrie",
+    "Family": "Légumes fruits",
+    "Operator": ">",
+    "Value": 0,
+    "Title": "Hygrométrie trop élevée (> max)",
+    "Actions": "Il faut ouvrir les portes et les fenêtres de toit afin d'évacuer l'excès d'humidité qui pourrait entrainer le développement de maladies (champignons) et le pourrissement des légumes !"
+  },
+  {
+    "SensorType": "pH",
+    "Family": "Légumes racines",
+    "Operator": "<",
+    "Value": "5.5",
+    "Title": "pH trop bas (< min)",
+    "Actions": "Ajouter de l'eau de pluie ou de l'eau osmosée jusqu'à rééquilibre du pH"
+  },
+  {
+    "SensorType": "pH",
+    "Family": "Légumes feuilles",
+    "Operator": "<",
+    "Value": "5.5",
+    "Title": "pH trop bas (< min)",
+    "Actions": "Ajouter de l'eau de pluie ou de l'eau osmosée jusqu'à rééquilibre du pH"
+  },
+  {
+    "SensorType": "pH",
+    "Family": "Légumes fleurs",
+    "Operator": "<",
+    "Value": "5.5",
+    "Title": "pH trop bas (< min)",
+    "Actions": "Ajouter de l'eau de pluie ou de l'eau osmosée jusqu'à rééquilibre du pH"
+  },
+  {
+    "SensorType": "pH",
+    "Family": "Légumes fruits",
+    "Operator": "<",
+    "Value": "5.5",
+    "Title": "pH trop bas (< min)",
+    "Actions": "Ajouter de l'eau de pluie ou de l'eau osmosée jusqu'à rééquilibre du pH"
+  },
+  {
+    "SensorType": "pH",
+    "Family": "Légumes racines",
+    "Operator": ">",
+    "Value": "6.5",
+    "Title": "pH trop élevé (> max)",
+    "Actions": "Ajouter de l'eau de pluie ou de l'eau osmosée jusqu'à rééquilibre du pH, il est également possible d'ajouter du bicarbonate de potassium en respondant les dosages."
+  },
+  {
+    "SensorType": "pH",
+    "Family": "Légumes feuilles",
+    "Operator": ">",
+    "Value": "6.5",
+    "Title": "pH trop élevé (> max)",
+    "Actions": "Ajouter de l'eau de pluie ou de l'eau osmosée jusqu'à rééquilibre du pH, il est également possible d'ajouter du bicarbonate de potassium en respondant les dosages."
+  },
+  {
+    "SensorType": "pH",
+    "Family": "Légumes fleurs",
+    "Operator": ">",
+    "Value": "6.5",
+    "Title": "pH trop élevé (> max)",
+    "Actions": "Ajouter de l'eau de pluie ou de l'eau osmosée jusqu'à rééquilibre du pH, il est également possible d'ajouter du bicarbonate de potassium en respondant les dosages."
+  },
+  {
+    "SensorType": "pH",
+    "Family": "Légumes fruits",
+    "Operator": ">",
+    "Value": "6.5",
+    "Title": "pH trop élevé (> max)",
+    "Actions": "Ajouter de l'eau de pluie ou de l'eau osmosée jusqu'à rééquilibre du pH, il est également possible d'ajouter du bicarbonate de potassium en respondant les dosages."
+  },
+  {
+    "SensorType": "Luminosité",
+    "Family": "Légumes racines",
+    "Operator": "<",
+    "Value": 5000,
+    "Title": "Manque de soleil (< min)",
+    "Actions": "Ajouter un éclairage d'appoint sur les semis afin qu'ils aient au moins 16h de lumière par jour"
+  },
+  {
+    "SensorType": "Luminosité",
+    "Family": "Légumes feuilles",
+    "Operator": "<",
+    "Value": 5000,
+    "Title": "Manque de soleil (< min)",
+    "Actions": "Ajouter un éclairage d'appoint sur les semis afin qu'ils aient au moins 16h de lumière par jour"
+  },
+  {
+    "SensorType": "Luminosité",
+    "Family": "Légumes fleurs",
+    "Operator": "<",
+    "Value": 5000,
+    "Title": "Manque de soleil (< min)",
+    "Actions": "Ajouter un éclairage d'appoint sur les semis afin qu'ils aient au moins 16h de lumière par jour"
+  },
+  {
+    "SensorType": "Luminosité",
+    "Family": "Légumes fruits",
+    "Operator": "<",
+    "Value": 5000,
+    "Title": "Manque de soleil (< min)",
+    "Actions": "Ajouter un éclairage d'appoint sur les semis afin qu'ils aient au moins 16h de lumière par jour"
+  },
+  {
+    "SensorType": "Luminosité",
+    "Family": "Légumes racines",
+    "Operator": ">",
+    "Value": 10000,
+    "Title": "Excès de soleil (> max)",
+    "Actions": "Déployer la toile d'ombrage, penser à éteindre les éclairages d'appoint la nuit pour respecter le cycle naturel des plantes."
+  },
+  {
+    "SensorType": "Luminosité",
+    "Family": "Légumes feuilles",
+    "Operator": ">",
+    "Value": 10000,
+    "Title": "Excès de soleil (> max)",
+    "Actions": "Déployer la toile d'ombrage, penser à éteindre les éclairages d'appoint la nuit pour respecter le cycle naturel des plantes."
+  },
+  {
+    "SensorType": "Luminosité",
+    "Family": "Légumes fleurs",
+    "Operator": ">",
+    "Value": 10000,
+    "Title": "Excès de soleil (> max)",
+    "Actions": "Déployer la toile d'ombrage, penser à éteindre les éclairages d'appoint la nuit pour respecter le cycle naturel des plantes."
+  },
+  {
+    "SensorType": "Luminosité",
+    "Family": "Légumes fruits",
+    "Operator": ">",
+    "Value": 10000,
+    "Title": "Excès de soleil (> max)",
+    "Actions": "Déployer la toile d'ombrage, penser à éteindre les éclairages d'appoint la nuit pour respecter le cycle naturel des plantes."
+  },
+  {
+    "SensorType": "Nutriment",
+    "Family": "Légumes racines",
+    "Operator": "<",
+    "Value": "0,75",
+    "Title": "EC trop faible (< min)",
+    "Actions": "Ajuster le pH en ajoutant de l'eau osmosée ou de l'eau de pluie et ajouter des fertilisants organiques en période de croissance."
+  },
+  {
+    "SensorType": "Nutriment",
+    "Family": "Légumes feuilles",
+    "Operator": "<",
+    "Value": "0,75",
+    "Title": "EC trop faible (< min)",
+    "Actions": "Ajuster le pH en ajoutant de l'eau osmosée ou de l'eau de pluie et ajouter des fertilisants organiques en période de croissance."
+  },
+  {
+    "SensorType": "Nutriment",
+    "Family": "Légumes fleurs",
+    "Operator": "<",
+    "Value": "0,75",
+    "Title": "EC trop faible (< min)",
+    "Actions": "Ajuster le pH en ajoutant de l'eau osmosée ou de l'eau de pluie et ajouter des fertilisants organiques en période de croissance."
+  },
+  {
+    "SensorType": "Nutriment",
+    "Family": "Légumes fruits",
+    "Operator": "<",
+    "Value": "2,5",
+    "Title": "EC trop faible (< min)",
+    "Actions": "Ajuster le pH en ajoutant de l'eau osmosée ou de l'eau de pluie et ajouter des fertilisants organiques en période de croissance."
+  },
+  {
+    "SensorType": "Nutriment",
+    "Family": "Légumes racines",
+    "Operator": ">",
+    "Value": "",
+    "Title": "EC trop élevée (> max)",
+    "Actions": "• Si l'eau commence à verdir, c'est que des algues sont entrain de se développer. Drainer 50% de l'eau présente dans les circuits, et reremplir avec de l'eau osmosée ou de l'eau de pluie."
+  },
+  {
+    "SensorType": "Nutriment",
+    "Family": "Légumes feuilles",
+    "Operator": ">",
+    "Value": "",
+    "Title": "EC trop élevée (> max)",
+    "Actions": "Si l'eau commence à verdir, c'est que des algues sont entrain de se développer. Drainer 50% de l'eau présente dans les circuits, et reremplir avec de l'eau osmosée ou de l'eau de pluie."
+  },
+  {
+    "SensorType": "Nutriment",
+    "Family": "Légumes fleurs",
+    "Operator": ">",
+    "Value": "",
+    "Title": "EC trop élevée (> max)",
+    "Actions": "Si l'eau commence à verdir, c'est que des algues sont entrain de se développer. Drainer 50% de l'eau présente dans les circuits, et reremplir avec de l'eau osmosée ou de l'eau de pluie."
+  },
+  {
+    "SensorType": "Nutriment",
+    "Family": "Légumes fruits",
+    "Operator": ">",
+    "Value": "",
+    "Title": "EC trop élevée (> max)",
+    "Actions": "Si l'eau commence à verdir, c'est que des algues sont entrain de se développer. Drainer 50% de l'eau présente dans les circuits, et reremplir avec de l'eau osmosée ou de l'eau de pluie."
+  }
+]

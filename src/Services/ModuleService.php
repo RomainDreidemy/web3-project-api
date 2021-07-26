@@ -44,6 +44,16 @@ class ModuleService
                 $actionConditions = $this->actionConditionRepository->findBySensorTypeAndFamily($data->getSensorType()->getId(), $family->getId());
                 $sensor = $this->sensorRepository->findOneBy(['module' => $module, 'type' => $data->getSensorType()]);
                 $spec = $this->specRepository->findOneBy(['family' => $family, 'sensorType' => $data->getSensorType()]);
+
+                $sensorData = (new SensorData())
+                    ->setSensorType($sensor->getType())
+                    ->setModule($module)
+                    ->setMin($spec->getMin())
+                    ->setMax($spec->getMax())
+                    ->setCurrentValue($data->getValue())
+                    ->setStatus()
+                ;
+
                 foreach ($actionConditions as $condition) {
 
                     $hasError = false;
@@ -65,15 +75,6 @@ class ModuleService
                             break;
                     }
 
-                    $sensorData = (new SensorData())
-                        ->setSensorType($sensor->getType())
-                        ->setModule($module)
-                        ->setMin($spec->getMin())
-                        ->setMax($spec->getMax())
-                        ->setCurrentValue($data->getValue())
-                        ->setStatus()
-                    ;
-
                     if ($hasError) {
                         foreach ($condition->getActions() as $action){
                             $sensorData
@@ -82,9 +83,8 @@ class ModuleService
                         }
                     }
 
-                    $returnActions[] = $sensorData;
                 }
-
+                $returnActions[] = $sensorData;
             }
 
             return $returnActions;

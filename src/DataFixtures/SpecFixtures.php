@@ -12,23 +12,19 @@ use Doctrine\Persistence\ObjectManager;
 
 class SpecFixtures extends Fixture implements DependentFixtureInterface
 {
-    public function __construct(private EntityManagerInterface $manager){}
-
     public function load(ObjectManager $manager)
     {
-        $sensorTypes = $this->manager->getRepository(SensorType::class)->findAll();
-        $families = $this->manager->getRepository(Familly::class)->findAll();
+        $specs = json_decode(file_get_contents(__DIR__ . '/datas/specs.json'), true);
 
-        foreach ($sensorTypes as $sensorType) {
-            foreach ($families as $family) {
-                $spec = (new Spec())
-                    ->setMin($min = random_int(20, 70))
-                    ->setMax($min + 10)
-                    ->setSensorType($sensorType)
-                    ->setFamily($family);
+        foreach ($specs as $spec) {
+            $s = (new Spec())
+                ->setFamily($manager->getRepository(Familly::class)->findOneBy(['name' => $spec['Family']]))
+                ->setSensorType($manager->getRepository(SensorType::class)->findOneBy(['name' => $spec['SensorType']]))
+                ->setMin(floatval($spec['min']))
+                ->setMax(floatval($spec['max']))
+            ;
 
-                $manager->persist($spec);
-            }
+            $manager->persist($s);
         }
 
         $manager->flush();

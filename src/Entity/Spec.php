@@ -18,12 +18,12 @@ class Spec
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $min;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $max;
 
@@ -38,29 +38,29 @@ class Spec
      */
     private $sensorType;
 
-    public function getId(): ?int
+    public function getId(): ?float
     {
         return $this->id;
     }
 
-    public function getMin(): ?int
+    public function getMin(): ?float
     {
         return $this->min;
     }
 
-    public function setMin(int $min): self
+    public function setMin(float $min): self
     {
         $this->min = $min;
 
         return $this;
     }
 
-    public function getMax(): ?int
+    public function getMax(): ?float
     {
         return $this->max;
     }
 
-    public function setMax(int $max): self
+    public function setMax(float $max): self
     {
         $this->max = $max;
 

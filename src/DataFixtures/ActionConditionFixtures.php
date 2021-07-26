@@ -20,26 +20,25 @@ class ActionConditionFixtures extends Fixture implements DependentFixtureInterfa
     {
         $faker = Factory::create();
 
-        $sensorTypes = $this->manager->getRepository(SensorType::class)->findAll();
-        $families = $this->manager->getRepository(Familly::class)->findAll();
-        $actions = $this->manager->getRepository(Action::class)->findAll();
+        $actionConditions = json_decode(file_get_contents(__DIR__ . '/datas/actions.json'), true);
 
-        $operators = ['<', '>', '='];
+        foreach ($actionConditions as $actionCondition) {
+            $sensorType = $this->manager->getRepository(SensorType::class)->findOneBy(['name' => $actionCondition['SensorType']]);
 
-        foreach ($families as $family){
-            foreach ($sensorTypes as $sensorType){
-                $condition = (new ActionCondition())
+            $family = $this->manager->getRepository(Familly::class)->findOneBy(['name' => $actionCondition['Family']]);
+
+            $action = $this->manager->getRepository(Action::class)->findOneBy(['name' => trim($actionCondition['Title'])]);
+
+            if(!is_null($sensorType) && !is_null($family) && !is_null($action)){
+                $ac = (new ActionCondition())
                     ->setFamily($family)
                     ->setSensorType($sensorType)
-                    ->setOperator($faker->randomElement($operators))
-                    ->setValue(random_int(5, 100))
+                    ->setOperator($actionCondition['Operator'])
+                    ->setValue(floatval($actionCondition['Value']))
+                    ->addAction($action)
                 ;
 
-                for ($i = 0; $i < random_int(1, 4); $i++){
-                    $condition->addAction($faker->randomElement($actions));
-                }
-
-                $manager->persist($condition);
+                $manager->persist($ac);
             }
         }
 

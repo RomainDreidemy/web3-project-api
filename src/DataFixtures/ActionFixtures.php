@@ -5,22 +5,26 @@ namespace App\DataFixtures;
 use App\Entity\Action;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Faker\Factory;
 
 class ActionFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $faker = Factory::create();
+        $actions = json_decode(file_get_contents(__DIR__ . '/datas/actions.json'), true);
 
-        for ($i = 0; $i < 10; $i++){
-            $action = (new Action())
-                ->setText('Texte de l\'action')
-            ;
 
-            $manager->persist($action);
+        foreach ($actions as $action) {
+            $alreadyExist = $manager->getRepository(Action::class)->findOneBy(['name' => $action['Title']]);
+
+            if(is_null($alreadyExist)) {
+                $a = (new Action())
+                    ->setName($action['Title'])
+                    ->setText(trim($action['Actions']))
+                ;
+
+                $manager->persist($a);
+                $manager->flush();
+            }
         }
-
-        $manager->flush();
     }
 }
