@@ -168,7 +168,7 @@ class SensorData
      */
     public function setStatus(): self
     {
-        $this->status = ($this->min < $this->currentValue && $this->max > $this->currentValue);
+        $this->status = ($this->min <= $this->currentValue && $this->max >= $this->currentValue);
 
         return $this;
     }
