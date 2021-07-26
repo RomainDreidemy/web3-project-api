@@ -27,9 +27,9 @@ class ActionConditionFixtures extends Fixture implements DependentFixtureInterfa
 
             $family = $this->manager->getRepository(Familly::class)->findOneBy(['name' => $actionCondition['Family']]);
 
-            $action = $this->manager->getRepository(Action::class)->findOneBy(['name' => $actionCondition['Title']]);
+            $action = $this->manager->getRepository(Action::class)->findOneBy(['name' => trim($actionCondition['Title'])]);
 
-            if(!is_null($sensorType) && !is_null($family)){
+            if(!is_null($sensorType) && !is_null($family) && !is_null($action)){
                 $ac = (new ActionCondition())
                     ->setFamily($family)
                     ->setSensorType($sensorType)

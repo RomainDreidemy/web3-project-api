@@ -14,12 +14,12 @@ class ActionFixtures extends Fixture
 
 
         foreach ($actions as $action) {
-            $alreadyExist = $manager->getRepository(Action::class)->findOneBy(['text' => $action['Actions']]);
+            $alreadyExist = $manager->getRepository(Action::class)->findOneBy(['name' => $action['Title']]);
 
             if(is_null($alreadyExist)) {
                 $a = (new Action())
                     ->setName($action['Title'])
-                    ->setText($action['Actions'])
+                    ->setText(trim($action['Actions']))
                 ;
 
                 $manager->persist($a);
