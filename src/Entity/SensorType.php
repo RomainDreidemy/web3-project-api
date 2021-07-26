@@ -57,6 +57,7 @@ class SensorType
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['ModuleApi:read'])]
     private $icon_path;
 
     public function __construct()
