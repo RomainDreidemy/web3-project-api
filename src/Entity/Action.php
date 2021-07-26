@@ -38,6 +38,7 @@ class Action
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['Actions:read', 'SensorData:read', 'ModuleApi:read'])]
     private $name;
 
     public function __construct()
