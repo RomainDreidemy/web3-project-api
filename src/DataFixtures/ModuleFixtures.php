@@ -24,16 +24,23 @@ class ModuleFixtures extends Fixture implements DependentFixtureInterface
         $families = $manager->getRepository(Familly::class)->findAll();
         $users = $this->userRepository->getSchoolUsers();
 
-        $nodeIds = ["12345678", "7654321", "7654320", "7654319"];
+        $modules = [
+            ['name' => 'bac de madame Biboule' ,'nodeId' => "12345678"],
+            ['name' => 'bac de monsieur Biboule' ,'nodeId' => "7654321"],
+            ['name' => 'bac de madame Courtemanche' ,'nodeId' => "7654320"],
+            ['name' => 'Bac de monsieur Duchêne' ,'nodeId' => "7654319"]
+        ];
 
-        foreach ($nodeIds as $nodeId) {
-            $module = (new Module())
-                ->setName($faker->word(4, true))
+
+
+        foreach ($modules as $module) {
+            $m = (new Module())
+                ->setName($module['name'])
                 ->setFamilly($faker->randomElement($families))
                 ->setUser($faker->randomElement($users))
-                ->setInfluxId($nodeId);
+                ->setInfluxId($module['nodeId']);
 
-            $manager->persist($module);
+            $manager->persist($m);
         }
 
         $manager->flush();
