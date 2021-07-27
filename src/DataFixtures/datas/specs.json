@@ -2,26 +2,26 @@
   {
     "SensorType": "Température de l'air",
     "Family": "Légumes racines",
-    "min": 16,
-    "max": 25
+    "min": 12,
+    "max": 28
   },
   {
     "SensorType": "Température de l'air",
     "Family": "Légumes feuilles",
-    "min": 16,
-    "max": 25
+    "min": 14,
+    "max": 26
   },
   {
     "SensorType": "Température de l'air",
     "Family": "Légumes fleurs",
     "min": 16,
-    "max": 25
+    "max": 26
   },
   {
     "SensorType": "Température de l'air",
     "Family": "Légumes fruits",
-    "min": 16,
-    "max": 25
+    "min": 18,
+    "max": 28
   },
   {
     "SensorType": "Température de l'eau",
@@ -48,52 +48,52 @@
     "max": 21
   },
   {
-    "SensorType": "Nutriment",
+    "SensorType": "Nutriments",
     "Family": "Légumes racines",
-    "min": "0,75",
+    "min": 0.75,
     "max": 2
   },
   {
-    "SensorType": "Nutriment",
+    "SensorType": "Nutriments",
     "Family": "Légumes feuilles",
-    "min": "0,75",
+    "min": 0.75,
     "max": 2
   },
   {
-    "SensorType": "Nutriment",
+    "SensorType": "Nutriments",
     "Family": "Légumes fleurs",
-    "min": "0,75",
+    "min": 0.75,
     "max": 2
   },
   {
-    "SensorType": "Nutriment",
+    "SensorType": "Nutriments",
     "Family": "Légumes fruits",
-    "min": "2,5",
-    "max": "3,5"
+    "min": 2,
+    "max": 3.5
   },
   {
     "SensorType": "pH",
     "Family": "Légumes racines",
-    "min": "5,5",
-    "max": "6,5"
+    "min": 5.5,
+    "max": 6.5
   },
   {
     "SensorType": "pH",
     "Family": "Légumes feuilles",
-    "min": "5,5",
-    "max": "6,5"
+    "min": 5.5,
+    "max": 6.5
   },
   {
     "SensorType": "pH",
     "Family": "Légumes fleurs",
-    "min": "5,5",
-    "max": "6,5"
+    "min": 5.5,
+    "max": 6.5
   },
   {
     "SensorType": "pH",
     "Family": "Légumes fruits",
-    "min": "5,5",
-    "max": "6,5"
+    "min": 5.5,
+    "max": 6.5
   },
   {
     "SensorType": "Luminosité",
@@ -104,43 +104,43 @@
   {
     "SensorType": "Luminosité",
     "Family": "Légumes feuilles",
-    "min": 5000,
+    "min": 7000,
     "max": 10000
   },
   {
     "SensorType": "Luminosité",
     "Family": "Légumes fleurs",
-    "min": 5000,
+    "min": 7000,
     "max": 10000
   },
   {
     "SensorType": "Luminosité",
     "Family": "Légumes fruits",
-    "min": 5000,
-    "max": 10000
+    "min": 10000,
+    "max": 14000
   },
   {
     "SensorType": "Hygrometrie",
     "Family": "Légumes racines",
-    "min": 0,
-    "max": 0
+    "min": 25,
+    "max": 75
   },
   {
     "SensorType": "Hygrometrie",
     "Family": "Légumes feuilles",
-    "min": 0,
-    "max": 0
+    "min": 30,
+    "max": 75
   },
   {
     "SensorType": "Hygrometrie",
     "Family": "Légumes fleurs",
-    "min": 0,
-    "max": 0
+    "min": 25,
+    "max": 75
   },
   {
     "SensorType": "Hygrometrie",
     "Family": "Légumes fruits",
-    "min": 0,
-    "max": 0
+    "min": 25,
+    "max": 70
   }
 ]
