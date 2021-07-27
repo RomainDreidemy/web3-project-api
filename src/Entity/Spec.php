@@ -20,12 +20,12 @@ class Spec
     /**
      * @ORM\Column(type="float")
      */
-    private $min;
+    private float $min;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $max;
+    private float $max;
 
     /**
      * @ORM\ManyToOne(targetEntity=Familly::class, inversedBy="specs")
