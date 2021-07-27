@@ -72,15 +72,15 @@ class SensorData
     /**
      * @return int
      */
-    public function getMin(): int
+    public function getMin(): float
     {
         return $this->min;
     }
 
     /**
-     * @param int $min
+     * @param float $min
      */
-    public function setMin(int $min): self
+    public function setMin(float $min): self
     {
         $this->min = $min;
 
@@ -88,17 +88,17 @@ class SensorData
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getMax(): int
+    public function getMax(): float
     {
         return $this->max;
     }
 
     /**
-     * @param int $max
+     * @param float $max
      */
-    public function setMax(int $max): self
+    public function setMax(float $max): self
     {
         $this->max = $max;
 
