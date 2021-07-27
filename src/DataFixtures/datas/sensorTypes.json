@@ -12,7 +12,7 @@
     "Icon": "/images/sensor_icons/Temperatur_deau.svg"
   },
   {
-    "Name": "Nutriment",
+    "Name": "Nutriments",
     "Unit": "ms",
     "influxId": "EC",
     "Icon": "/images/sensor_icons/Nurriture.svg"
