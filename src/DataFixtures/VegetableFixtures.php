@@ -18,7 +18,7 @@ class VegetableFixtures extends Fixture
         $vegetables = json_decode(file_get_contents(__DIR__ . '/datas/vegetables.json'), true);
 
         foreach ($vegetables as $vegetable) {
-            if (!empty(trim($vegetable['Property'])) && !empty($vegetable['Intro'])) {
+            if (!empty(trim($vegetable['Property']))) {
                 $v = (new Vegetable())
                     ->setName($vegetable['Property'])
                     ->setFamily($this->famillyRepository->findOneBy(['name' => $vegetable['Family']]))
@@ -27,10 +27,10 @@ class VegetableFixtures extends Fixture
                     ->setGlucose(intval($vegetable['Glucose']))
                     ->setProtein(intval($vegetable['Protein']))
                     ->setLipid(intval($vegetable['Lipid']))
-                    ->setIntroText($vegetable['Intro'])
-                    ->setCultureText($vegetable['Culture'])
-                    ->setEntretienText($vegetable['Entretien'])
-                    ->setRecolteText($vegetable['Recolte'])
+                    ->setIntroText($this->loremIfEmpty($vegetable['Intro']))
+                    ->setCultureText($this->loremIfEmpty($vegetable['Culture']))
+                    ->setEntretienText($this->loremIfEmpty($vegetable['Entretien']))
+                    ->setRecolteText($this->loremIfEmpty($vegetable['Recolte']))
                     ->setCycle($vegetable['Cycle'])
                     ->setExposition($vegetable['Exposition'])
                     ->setYield($vegetable['Rendement'])
@@ -46,6 +46,14 @@ class VegetableFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+
+    private function loremIfEmpty(string $text){
+        if(empty(trim($text))){
+            return "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+        }
+
+        return $text;
     }
 
     private function getSvgPath($vegetable): string
