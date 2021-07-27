@@ -16,13 +16,13 @@ class SensorData
     private SensorType $sensorType;
 
     #[Groups(['SensorData:read', 'ModuleApi:read'])]
-    private int $min;
+    private float $min;
 
     #[Groups(['SensorData:read', 'ModuleApi:read'])]
-    private int $max;
+    private float $max;
 
     #[Groups(['SensorData:read', 'ModuleApi:read'])]
-    private int $currentValue;
+    private float $currentValue;
 
     /**
      * @var Action[]
