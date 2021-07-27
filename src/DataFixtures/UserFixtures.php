@@ -24,9 +24,9 @@ class UserFixtures extends Fixture
                 'password' => 'admin'
             ],
             [
-                'email' => 'school@domain.net',
+                'email' => 'roger-le-potager@gmail.com',
                 'roles' => [UserRoles::ROLE_SCHOOL],
-                'password' => 'school'
+                'password' => 'roger'
             ],
         ];
 
