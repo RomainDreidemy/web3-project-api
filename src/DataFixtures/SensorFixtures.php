@@ -22,8 +22,6 @@ class SensorFixtures extends Fixture implements DependentFixtureInterface
                 $sensor = (new Sensor())
                     ->setType($sensorType)
                     ->setModule($module)
-                    ->setIdInflux(Uuid::v4())
-                    ->setLastValue(random_int(0, 100))
                 ;
 
                 $manager->persist($sensor);

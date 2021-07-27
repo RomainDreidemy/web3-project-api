@@ -18,7 +18,7 @@ class VegetableFixtures extends Fixture
         $vegetables = json_decode(file_get_contents(__DIR__ . '/datas/vegetables.json'), true);
 
         foreach ($vegetables as $vegetable) {
-            if (!empty(trim($vegetable['Property']))) {
+            if (!empty(trim($vegetable['Property'])) && !empty($vegetable['Intro'])) {
                 $v = (new Vegetable())
                     ->setName($vegetable['Property'])
                     ->setFamily($this->famillyRepository->findOneBy(['name' => $vegetable['Family']]))
