@@ -30,16 +30,6 @@ class Sensor
      */
     private Module $module;
 
-    /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     */
-    private string $id_influx;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $last_value;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -65,30 +55,6 @@ class Sensor
     public function setModule(Module $module): self
     {
         $this->module = $module;
-
-        return $this;
-    }
-
-    public function getIdInflux(): string
-    {
-        return $this->id_influx;
-    }
-
-    public function setIdInflux(string $id_influx): self
-    {
-        $this->id_influx = $id_influx;
-
-        return $this;
-    }
-
-    public function getLastValue(): ?int
-    {
-        return $this->last_value;
-    }
-
-    public function setLastValue(?int $last_value): self
-    {
-        $this->last_value = $last_value;
 
         return $this;
     }
