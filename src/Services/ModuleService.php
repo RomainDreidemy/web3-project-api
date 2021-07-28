@@ -54,6 +54,8 @@ class ModuleService
                     ->setStatus()
                 ;
 
+//                dump($sensorData);
+
                 foreach ($actionConditions as $condition) {
 
                     $hasError = false;
